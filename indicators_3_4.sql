@@ -12,6 +12,8 @@ CREATE TABLE count_unique_subscribers_per_region_per_week AS (
 
 );
 
+-- See indicators_1_2.sql for code to create the home_locations table
+
 CREATE TABLE count_unique_subscribers_home_region_per_week AS (
 
     SELECT EXTRACT('week' FROM calls.date) AS week,
