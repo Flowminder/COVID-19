@@ -26,5 +26,5 @@ This repository contains SQL code and descriptions for the following indicators:
 - [Indicator 1: Count of unique subscribers, per region per day](indicator_1.md)
 - [Indicator 2: Count of unique ‘non-residents’, per region per day](indicator_2.md)
 - [Indicator 3: Count of unique subscribers, per region per week](indicator_3.md)
-- [Indicator_4: Count of unique ‘non-residents’, per region per week](indicator_4.md)
+- [Indicator 4: Count of unique ‘non-residents’, per region per week](indicator_4.md)
 - [Indicator 5: ‘Connectivity’ between pairs of regions - count of unique subscribers seen at each pair of locations, each day](indicator_5.md)
