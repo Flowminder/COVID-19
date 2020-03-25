@@ -20,6 +20,8 @@ The code has been written assuming that the following tables exist:
 - `cell_id`: identifier of the cell tower,
 - `region`: the administrative region (or other type of region) that the cell tower is in. We are able to provide assistance with mapping cell tower locations to administrative (or other) regions, if you do not already have this mapping.
 
+[core_tables.sql](core_tables.sql) contains definitions of the expected `calls` and `cells` tables.
+
 ## Content
 
 This repository contains SQL code and descriptions for the following indicators:
