@@ -13,9 +13,9 @@ We are adding indicators here as we are producing them. Many of the indicators b
 
 A description of each indicator is provided with the code, together with suggestions for how it can be used.
 
-The indicators we have initially focused on on are relevant for low and lower middle-income country settings where most subscribers have a low frequency of events (e.g.calls and data downloads). Other indicators which can take advantages of the higher frequency data in high-income settings will be added. 
+The indicators we have initially focused on are relevant for low and lower middle-income country settings where most subscribers have a low frequency of events (e.g.calls and data downloads). Other indicators which can take advantages of the higher frequency data in high-income settings will be added. 
 
-The code will need to be adapted to run on your own system. The names of tables and columns will need to be changed, and the code may need to be optimised to suit the structure of your data.The code has been written assuming that the following tables exist:
+MNOs will need to adapt to run on your own system. The names of tables and columns will need to be changed, and the code may need to be optimised to suit the structure of your data.The code has been written assuming that the following tables exist:
 
 `calls` is the call events table, including the columns:
 - `msisdn`: SIM identifier,
