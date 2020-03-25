@@ -1,0 +1,1 @@
+Whilst we finalise these guidelines, please contact us at [covid19@flowminder.org](mailto:covid19@flowminder.org) if you would like to request support, to contribute, or have other enquiries.
