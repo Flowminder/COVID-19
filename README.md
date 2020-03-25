@@ -11,14 +11,14 @@ The code will need to be adapted to run on your own system. The names of tables 
 The code has been written assuming that the following tables exist:
 
 `calls` is the call events table, including the columns:
-- `msisdn`: SIM identifier
-- `date`: event date
-- `datetime`: event timestamp
-- `location_id`: identifier of the cell tower
+- `msisdn`: SIM identifier,
+- `date`: event date,
+- `datetime`: event timestamp,
+- `location_id`: identifier of the cell tower.
 
 `cells` is a table with information about cell towers, including the columns:
-- `cell_id`: identifier of the cell tower
-- `region`: the administrative region (or other type of region) that the cell tower is in 
+- `cell_id`: identifier of the cell tower,
+- `region`: the administrative region (or other type of region) that the cell tower is in. We are able to provide assistance with mapping cell tower locations to administrative (or other) regions, if you do not already have this mapping.
 
 ## Content
 

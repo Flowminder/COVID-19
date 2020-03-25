@@ -16,11 +16,11 @@ To produce this indicator, you need to run a sequence of queries in the followin
 2. Home locations for all subscribers - `home_locations`  
     *Description*: This query allocates each subscriber to a region that is defined to be their ‘home location’. We do this by assuming that a subscriber uses their phone for the last time each day in their home region, and then find the modal region (the region with the most counts) over the course of a month. We recommend that you use a period of data that begins one month before travel restrictions or the COVID-19 outbreak was announced in your country, and ends on the day of the announcement.
 
-3. Count of unique subscribers seen at their home region, each day - `count_unique_subscribers_home_region_per_day`  
+3. Count of unique subscribers seen at their home region, each day - `count_unique_active_residents_per_day`  
     *Description*: This calculates the number of subscribers that use their phone at their home location (see point (2) above) each day.
 
 4. Subtract (3) from (1) to obtain the number of non-residents seen at each region, each day - `count_unique_visitors_per_region_per_day`  
-    *Description*: For each date and region, this query subtracts the number of non-resident visitors from the total number of visitors.
+    *Description*: For each date and region, this query subtracts the number of active residents (calculated in step 3) from the total number of active subscribers (calculated in step 1) to obtain the number of outside visitors.
 
 ## Usage and interpretation
 

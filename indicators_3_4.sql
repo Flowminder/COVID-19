@@ -14,7 +14,7 @@ CREATE TABLE count_unique_subscribers_per_region_per_week AS (
 
 -- See indicators_1_2.sql for code to create the home_locations table
 
-CREATE TABLE count_unique_subscribers_home_region_per_week AS (
+CREATE TABLE count_unique_active_residents_per_week AS (
 
     SELECT EXTRACT('week' FROM calls.date) AS week,
         cells.region AS region,
@@ -37,7 +37,7 @@ CREATE TABLE count_unique_visitors_per_region_per_week AS (
         region,
 	      all_visits.count - COALESCE(home_visits.count, 0) AS count
     FROM count_unique_subscribers_per_region_per_week all_visits
-    LEFT JOIN count_unique_subscribers_home_region_per_week home_visits
+    LEFT JOIN count_unique_active_residents_per_week home_visits
         ON all_visits.date = home_visits.date
 	      AND all_visits.region = home_visits.region
 
