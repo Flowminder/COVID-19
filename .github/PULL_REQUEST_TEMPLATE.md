@@ -1,5 +1,7 @@
 ### Closes issue(s)
 
+- Closes #
+
 ### Checklist
 
 I have:
@@ -8,7 +10,8 @@ I have:
 - [ ] tested any new code,
 - [ ] added or updated any relevant documentation,
 - [ ] ensured all links in the documentation are correct,
-- [ ] updated the README, if relevant.
+- [ ] Added an [MPLv2 License Header](https://www.mozilla.org/en-US/MPL/headers/) if appropriate,
+- [ ] updated the README if appropriate.
 
 ### Changes include
 - [ ] Updates/fixes existing code

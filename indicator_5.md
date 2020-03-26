@@ -8,7 +8,7 @@ This is the number of ‘connections’ between each pair or regions, each day. 
 
 You can find the SQL code for producing this indicator in [indicator_5.sql](indicator_5.sql).
 
-The query [`regional_pair_connections_per_day`](indicator_5.sql#L1-L44) is a standalone query which can be run by itself to produce the indicator.
+The query [`regional_pair_connections_per_day`](indicator_5.sql#L5-L48) is a standalone query which can be run by itself to produce the indicator.
 
 The first time you run this, you will need to include a timespan of data that includes the period before any mobility restrictions were enforced in your country, or before the first cases of COVID-19 were reported in your country. This is so that you can establish what ‘normal’ baseline behaviour looks like, and then see how this behaviour changed. We recommend that you include at least two weeks of ‘normal’ baseline data (i.e. the two weeks immediately before the announcement of restrictions or the outbreak), and preferably four weeks.
 
