@@ -8,7 +8,7 @@ This is the number of unique subscribers seen in each region, each week.
 
 You can find the SQL code for producing this indicator in [indicators_3_4.sql](indicators_3_4.sql).
 
-The query [`count_unique_subscribers_per_region_per_week`](indicators_3_4.sql#L5-L17) is a standalone query which can be run by itself to produce the indicator. When specifying the dates in the query, take care to include entire weeks in the date range. (E.g. the inbuilt `extract(‘week’)` function in Postgres assigns a number to each week, with weeks starting on Monday and ending on Sunday).
+The query [`count_unique_subscribers_per_region_per_week`](indicators_3_4.sql#L5-L20) is a standalone query which can be run by itself to produce the indicator. When specifying the dates in the query, take care to include entire weeks in the date range. (E.g. the inbuilt `extract(‘week’)` function in Postgres assigns a number to each week, with weeks starting on Monday and ending on Sunday).
 
 ## Usage and interpretation
 
