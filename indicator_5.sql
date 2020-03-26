@@ -43,7 +43,7 @@ CREATE TABLE regional_pair_connections_per_day AS (
                 AND t1.date = t2.date
             WHERE t1.region < t2.region
 
-        )
+        ) sub1
         GROUP BY 1, 2, 3
     ) AS grouped
     WHERE grouped.count > 15
