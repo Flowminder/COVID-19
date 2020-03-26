@@ -10,16 +10,16 @@ You can find the SQL code for producing this indicator in [indicators_1_2.sql](i
 
 To produce this indicator, you need to run a sequence of queries in the following order. These are:
 
-1. Count of unique subscribers per region per day - [`count_unique_subscribers_per_region_per_day`](indicators_1_2.sql#L1-L14)  
+1. Count of unique subscribers per region per day - [`count_unique_subscribers_per_region_per_day`](indicators_1_2.sql#L5-L18)  
     See [Indicator 1](indicator_1.md) for description
 
-2. Home locations for all subscribers - [`home_locations`](indicators_1_2.sql#L18-L45)  
+2. Home locations for all subscribers - [`home_locations`](indicators_1_2.sql#L22-L49)  
     *Description*: This query allocates each subscriber to a region that is defined to be their ‘home location’. We do this by assuming that a subscriber uses their phone for the last time each day in their home region, and then find the modal region (the region with the most counts) over the course of a month. We recommend that you use a period of data that begins one month before travel restrictions or the COVID-19 outbreak was announced in your country, and ends on the day of the announcement.
 
-3. Count of unique subscribers seen at their home region, each day - [`count_unique_active_residents_per_day`](indicators_1_2.sql#L48-L61)  
+3. Count of unique subscribers seen at their home region, each day - [`count_unique_active_residents_per_day`](indicators_1_2.sql#L52-L65)  
     *Description*: This calculates the number of subscribers that use their phone at their home location (see point (2) above) each day.
 
-4. Subtract (3) from (1) to obtain the number of non-residents seen at each region, each day - [`count_unique_visitors_per_region_per_day`](indicators_1_2.sql#L63-L73)  
+4. Subtract (3) from (1) to obtain the number of non-residents seen at each region, each day - [`count_unique_visitors_per_region_per_day`](indicators_1_2.sql#L67-L77)  
     *Description*: For each date and region, this query subtracts the number of active residents (calculated in step 3) from the total number of active subscribers (calculated in step 1) to obtain the number of outside visitors.
 
 ## Usage and interpretation
