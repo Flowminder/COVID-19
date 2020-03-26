@@ -43,6 +43,12 @@ This repository currently contains SQL code and descriptions for the following i
 
 We will soon be adding analysis code and guidelines.
 
+## Privacy
+
+All indicators included in this repository produce aggregated outputs (i.e. one result per region, not one result per subscriber), to protect subscribers' privacy and personal data. Additionally, the queries only produce outputs for regions with more than 15 subscribers.
+
+Note that some intermediate queries (including `home_locations`) produce per-subscriber data. These intermediate results should not be shared outside of the MNO's system.
+
 ## Feedback
 
 We welcome all suggestions and feedback. Please open an issue, submit a pull request, or contact the team at covid19@flowminder.org.

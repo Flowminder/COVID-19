@@ -4,15 +4,18 @@
 
 CREATE TABLE count_unique_subscribers_per_region_per_week AS (
 
-    SELECT EXTRACT('week' FROM calls.date) AS week,
-        cells.region AS region,
-        COUNT(DISTINCT calls.msisdn) AS count
-    FROM calls
-    INNER JOIN cells
-        ON calls.location_id = cells.cell_id
-    WHERE calls.date >= '2020-02-17'
-        AND calls.datetime <= '2020-03-15'
-    GROUP BY 1, 2
+    SELECT * FROM (
+        SELECT EXTRACT('week' FROM calls.date) AS week,
+            cells.region AS region,
+            COUNT(DISTINCT calls.msisdn) AS count
+        FROM calls
+        INNER JOIN cells
+            ON calls.location_id = cells.cell_id
+        WHERE calls.date >= '2020-02-17'
+            AND calls.datetime <= '2020-03-15'
+        GROUP BY 1, 2
+    ) AS grouped
+    WHERE grouped.count > 15
 
 );
 
@@ -20,29 +23,35 @@ CREATE TABLE count_unique_subscribers_per_region_per_week AS (
 
 CREATE TABLE count_unique_active_residents_per_week AS (
 
-    SELECT EXTRACT('week' FROM calls.date) AS week,
-        cells.region AS region,
-        COUNT(DISTINCT calls.msisdn) AS count
-    FROM calls
-    INNER JOIN cells
-        ON calls.location_id = cells.cell_id
-    INNER JOIN home_locations homes
-        ON calls.msisdn = homes.msisdn
-        AND cells.region = homes.region
-    WHERE calls.datetime >= '2020-02-17'
-        AND calls.datetime <= '2020-03-15'
-    GROUP BY 1, 2
+    SELECT * FROM (
+        SELECT EXTRACT('week' FROM calls.date) AS week,
+            cells.region AS region,
+            COUNT(DISTINCT calls.msisdn) AS count
+        FROM calls
+        INNER JOIN cells
+            ON calls.location_id = cells.cell_id
+        INNER JOIN home_locations homes
+            ON calls.msisdn = homes.msisdn
+            AND cells.region = homes.region
+        WHERE calls.datetime >= '2020-02-17'
+            AND calls.datetime <= '2020-03-15'
+        GROUP BY 1, 2
+    ) AS grouped
+    WHERE grouped.count > 15
 
 );
 
 CREATE TABLE count_unique_visitors_per_region_per_week AS (
 
-    SELECT week,
-        region,
-	      all_visits.count - COALESCE(home_visits.count, 0) AS count
-    FROM count_unique_subscribers_per_region_per_week all_visits
-    LEFT JOIN count_unique_active_residents_per_week home_visits
-        ON all_visits.date = home_visits.date
-	      AND all_visits.region = home_visits.region
+    SELECT * FROM (
+        SELECT week,
+            region,
+            all_visits.count - COALESCE(home_visits.count, 0) AS count
+        FROM count_unique_subscribers_per_region_per_week all_visits
+        LEFT JOIN count_unique_active_residents_per_week home_visits
+            ON all_visits.date = home_visits.date
+            AND all_visits.region = home_visits.region
+    ) AS visitors
+    WHERE visitors.count > 15
 
 );
