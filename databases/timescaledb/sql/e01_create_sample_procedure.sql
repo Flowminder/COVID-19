@@ -29,8 +29,8 @@ BEGIN
 		FROM (
 			SELECT cell_id AS location_id, d.datetime, sid FROM (
 				SELECT
-					(random()*99)::integer + 1 cid,
-					(random()*9999)::integer + 1 sid,
+					floor(random()*99) + 1 cid,
+					floor(random()*9999) + 1 sid,
 					start_timestamp + random() * time_interval AS datetime
 				FROM generate_series(1, sample_count)
 			) d
