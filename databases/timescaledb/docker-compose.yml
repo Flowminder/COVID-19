@@ -1,0 +1,39 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+# DOCKER COMPOSE FOR FLOWTIMEDB
+#
+
+version: '3.5'
+
+networks:
+  db:
+
+services:
+  flowtimedb:
+    container_name: flowtimedb
+    build:
+      context: ../../
+      dockerfile: databases/timescaledb/Dockerfile
+      target: base
+    image: ${BASE_NAME}:${CONTAINER_TAG:-latest}
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-flowtimedb}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-timetime}
+      - POSTGRES_DB=${POSTGRES_DB:-flowtimedb}
+    ports:
+      - ${PORT:-5444}:5432
+    tty: true
+    stdin_open: true
+    restart: always
+    shm_size: ${POSTGRES_SHM:-1GB}
+    volumes:
+      - flowtimedb:/var/lib/postgresql/data
+    networks:
+      db:
+        aliases:
+          - flowtimedb
+
+volumes:
+  flowtimedb:

@@ -1,0 +1,44 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+# DOCKER COMPOSE FOR FLOWTIMEDB SAMPLE DATA
+#
+
+version: '3.5'
+
+networks:
+  db:
+
+services:
+  timescaledb_sampledata:
+    container_name: flowtimedb_sample_data
+    build:
+      context: ../../
+      dockerfile: databases/timescaledb/Dockerfile
+      target: sample-data
+    image: ${DB_SAMPLE_DATA_NAME}:${CONTAINER_TAG:-latest}
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-flowtimedb}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-timetime}
+      - POSTGRES_DB=${POSTGRES_DB:-flowtimedb}
+      - SUBSCRIBER_COUNT=${SUBSCRIBER_COUNT:-1000}
+      - CELL_COUNT=${CELL_COUNT:-50}
+      - SAMPLE_COUNT=${SAMPLE_COUNT:-50000}
+      - SAMPLE_START_TIME=${SAMPLE_START_TIME:-20200201}
+      - SAMPLE_END_TIME=${SAMPLE_END_TIME:-20200307}
+    ports:
+      - ${PORT:-5444}:5432
+    tty: true
+    stdin_open: true
+    restart: always
+    shm_size: ${POSTGRES_SHM:-1GB}
+    volumes:
+      - flowtimedb_sample_data:/var/lib/postgresql/data
+    networks:
+      db:
+        aliases:
+          - flowtimedb_sample_data
+
+volumes:
+  flowtimedb_sample_data:
