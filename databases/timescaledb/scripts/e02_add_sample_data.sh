@@ -21,7 +21,7 @@ psql --dbname="$POSTGRES_DB" -c "
         INSERT INTO cells (cell_id, region)
             SELECT cell_id, region FROM (
                 SELECT TO_CHAR(i, '00000')::TEXT cell_id, floor(random() * 20) + 1 rid
-                FROM generate_series(1,100) s(i)
+                FROM generate_series(1,$CELL_COUNT) s(i)
             ) l
             INNER JOIN (
                 SELECT row_number() over() AS rid, region FROM regions
@@ -29,7 +29,7 @@ psql --dbname="$POSTGRES_DB" -c "
             USING (rid);
 
         INSERT INTO subscribers (msisdn)
-            SELECT md5(random()::TEXT) msisdn FROM generate_series(1, 10000);
+            SELECT md5(random()::TEXT) msisdn FROM generate_series(1, $SUBSCRIBER_COUNT);
 
         INSERT INTO calls (date, datetime, msisdn, location_id)
             SELECT date, datetime, msisdn, location_id

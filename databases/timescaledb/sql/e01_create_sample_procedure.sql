@@ -16,10 +16,15 @@ CREATE OR REPLACE FUNCTION generate_sample_cdr(IN sample_count INTEGER DEFAULT 7
 	    location_id         TEXT
 	) AS
 $$
+#print_strict_params on
 DECLARE
 	time_interval INTERVAL;
+	subscriber_count int;
+	cell_count int;
 BEGIN
 	time_interval = (end_timestamp - start_timestamp) + INTERVAL '1 day' - INTERVAL '0.01' SECONDS;
+	SELECT COUNT(*) INTO STRICT subscriber_count FROM subscribers;
+	SELECT COUNT(*) INTO STRICT cell_count FROM cells;
 	RETURN QUERY
 	    SELECT
 			l.datetime::date AS date,
@@ -29,8 +34,8 @@ BEGIN
 		FROM (
 			SELECT cell_id AS location_id, d.datetime, sid FROM (
 				SELECT
-					floor(random()*99) + 1 cid,
-					floor(random()*9999) + 1 sid,
+					floor(random()*cell_count) + 1 cid,
+					floor(random()*subscriber_count) + 1 sid,
 					start_timestamp + random() * time_interval AS datetime
 				FROM generate_series(1, sample_count)
 			) d

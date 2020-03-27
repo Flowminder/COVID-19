@@ -45,18 +45,22 @@ POSTGRES_PASSWORD=timetime
 PORT=5444
 POSTGRES_SHM=1G
 # sample data characteristics
-SAMPLE_COUNT=10000
+SUBSCRIBER_COUNT=1000
+CELL_COUNT=50
+SAMPLE_COUNT=50000
 SAMPLE_START_TIME=20200201
-SAMPLE_END_TIME=20200315
+SAMPLE_END_TIME=20200307
 ```
 These default values are included in the environment variable file `.env-dev`:
+- `SUBSCRIBER_COUNT` defines how many unique msisdns are generated in the sample data. 
+- `CELL_COUNT` defines how many unique cell identifiers are generated in the sample data. 
 - `SAMPLE_COUNT` defines how many records are generated in the sample data. 
 - `SAMPLE_START_TIME` defines the start timestamp from which the sample data will be generated
 - `SAMPLE_END_TIME` defines the end timestamp up to which the sample data will be generated. 
 
 Note that sample data is generate on the first time the container is started up, using the settings in these environment variables.
 
-If these environment variables are not set, the Docker compose yml file will fall back to the defaults defined there e.g. `${SAMPLE_COUNT:-7}` will default to 7 if the `SAMPLE_COUNT` environment variable is not defined.
+If these environment variables are not set, the Docker compose yml file will fall back to the defaults defined there e.g. `${SAMPLE_COUNT:-10000}` will default to 10000 if the `SAMPLE_COUNT` environment variable is not defined.
 
 ### Procedure to bring up a `timescaledb` database instance with pre-ingested sample data
 
