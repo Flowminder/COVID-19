@@ -45,9 +45,9 @@ POSTGRES_PASSWORD=timetime
 PORT=5444
 POSTGRES_SHM=1G
 # sample data characteristics
-SAMPLE_COUNT=20
-SAMPLE_START_TIME=20200101
-SAMPLE_END_TIME=20200107
+SAMPLE_COUNT=10000
+SAMPLE_START_TIME=20200201
+SAMPLE_END_TIME=20200315
 ```
 These default values are included in the environment variable file `.env-dev`:
 - `SAMPLE_COUNT` defines how many records are generated in the sample data. 
