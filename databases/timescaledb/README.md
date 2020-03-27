@@ -34,6 +34,25 @@ stop-sample-db                 Stop sample database but retain volumes
 
 ```
 
+### Setting the environment variables
+
+The following default environment variables are used to configure the timescaledb Docker container
+```
+# Default environment variables
+POSTGRES_DB=flowtimedb
+POSTGRES_USER=flowtimedb
+POSTGRES_PASSWORD=timetime
+PORT=5444
+POSTGRES_SHM=1G
+# sample data characteristics
+SAMPLE_COUNT=20
+SAMPLE_START_TIME=20200101
+SAMPLE_END_TIME=20200107
+```
+These default values are included in the environment variable file `.env-dev`. `SAMPLE_COUNT` defines how many records are generated in the sample data. `SAMPLE_START_TIME` and `SAMPLE_END_TIME` define the start and end timestamps between which the sample data will be generated. Note that sample data is generate on the first time the container is started up, using the settings in these environment variables.
+
+If these environment variables are not set, the Docker compose yml file will fall back to the defaults defined there e.g. `${SAMPLE_COUNT:-7}` will default to 7 if the `SAMPLE_COUNT` environment variable is not defined.
+
 ### Procedure to bring up a `timescaledb` database instance with pre-ingested sample data
 
 To export the default values for the environment variables, build the container image, and spin up the database with sample data:
