@@ -16,7 +16,7 @@ export PGUSER="$POSTGRES_USER"
 psql --dbname="$POSTGRES_DB" -c "
     BEGIN;
         INSERT INTO regions (region)
-            SELECT concat('Region-', TO_CHAR(generate_series, '00')) AS region from generate_series(1,20);
+            SELECT 'Region-' || TO_CHAR(i, 'FM00') AS region from generate_series(1,20) s(i);
 
         INSERT INTO cells (cell_id, region)
             SELECT cell_id, region FROM (
