@@ -58,7 +58,7 @@ CREATE TABLE home_locations AS (
         GROUP BY 1, 2
 
         ) times_visited
-    ) ranked_visits
+    ) ranked_locations
     WHERE rank = 1
 
 );
