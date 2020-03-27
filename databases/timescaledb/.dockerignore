@@ -12,8 +12,8 @@
 #
 # Now un-exclude only those folders and files that are needed for building the image:
 #
-!./sql/a01_create_db.sql
-!../../core_tables.sql
-!./sql/d01_create_db.sql
-!./sql/e01_create_sample_procedure.sql
-!./scripts/e02_add_sample_data.sh
+!./databases/timescaledb/sql/a01_create_db.sql
+!./core_tables.sql
+!./databases/timescaledb/sql/d01_create_db.sql
+!./databases/timescaledb/sql/e01_create_sample_procedure.sql
+!./databases/timescaledb/scripts/e02_add_sample_data.sh
