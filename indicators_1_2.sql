@@ -6,7 +6,7 @@ CREATE TABLE count_unique_subscribers_per_region_per_day AS (
 
     SELECT * FROM (
         SELECT date(calls.datetime) AS date,
-            cells.region AS region
+            cells.region AS region,
             COUNT(DISTINCT msisdn) AS count
         FROM calls
         INNER JOIN cells
@@ -23,30 +23,43 @@ CREATE TABLE count_unique_subscribers_per_region_per_day AS (
 
 CREATE TABLE home_locations AS (
 
-    SELECT msisdn,
-        region
-    FROM (
-
-        SELECT msisdn,
-            cells.region
+    SELECT msisdn, region FROM (
+        SELECT
+            msisdn,
+            region,
+            row_number() OVER (
+                PARTITION BY msisdn
+                ORDER BY total DESC, date DESC
+            ) AS rank
         FROM (
-            SELECT calls.msisdn,
-                cells.region,
-                calls.datetime,
-                ROW_NUMBER() OVER (PARTITION BY calls.msisdn, date(calls.datetime)
-                ORDER BY calls.datetime DESC) AS rank
-        FROM calls
-        INNER JOIN cells
-            ON calls.location_id = cells.cell_id
-        WHERE calls.date >= '2020-02-01'
-            AND calls.date <= '2020-02-29'
 
-        ) sub1
+            SELECT msisdn,
+                region,
+                count(*) AS total,
+                max(date) AS date
+            FROM (
+                SELECT calls.msisdn,
+                    cells.region,
+                    calls.datetime,
+                    calls.date,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY calls.msisdn, date(calls.datetime)
+                        ORDER BY calls.datetime DESC
+                    ) AS rank
+                FROM calls
+                INNER JOIN cells
+                    ON calls.location_id = cells.cell_id
+                WHERE calls.date >= '2020-02-01'
+                    AND calls.date <= '2020-02-29'
 
+            ) ranked_events
+
+        WHERE rank = 1
+        GROUP BY 1, 2
+
+        ) times_visited
+    ) ranked_locations
     WHERE rank = 1
-    GROUP BY 1, 2
-
-    ) sub2
 
 );
 
@@ -71,8 +84,8 @@ CREATE TABLE count_unique_active_residents_per_day AS (
 
 CREATE TABLE count_unique_visitors_per_region_per_day AS (
     SELECT * FROM (
-        SELECT date,
-            region,
+        SELECT all_visits.date,
+            all_visits.region,
             all_visits.count - COALESCE(home_visits.count, 0) AS count
         FROM count_unique_subscribers_per_region_per_day all_visits
         LEFT JOIN count_unique_active_residents_per_day home_visits
