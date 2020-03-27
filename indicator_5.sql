@@ -16,7 +16,7 @@ CREATE TABLE regional_pair_connections_per_day AS (
                 t1.region AS region1,
                 t2.region AS region2
             FROM (
-                SELECT calls.msisdn,
+                SELECT DISTINCT calls.msisdn,
                     calls.date,
                     cells.region
                 FROM calls
@@ -29,7 +29,7 @@ CREATE TABLE regional_pair_connections_per_day AS (
                 FULL OUTER JOIN
 
                 (
-                SELECT calls.msisdn,
+                SELECT DISTINCT calls.msisdn,
                     calls.date,
                     cells.region
                 FROM calls
