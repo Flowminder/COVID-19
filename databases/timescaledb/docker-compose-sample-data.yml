@@ -1,0 +1,39 @@
+#
+# DOCKER COMPOSE FOR FLOWTIMEDB SAMPLE DATA
+#
+
+version: '3.5'
+
+networks:
+  db:
+
+services:
+  timescaledb_sampledata:
+    container_name: flowtimedb_sample_data
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: sample-data
+    image: ${DB_SAMPLE_DATA_NAME}:${CONTAINER_TAG:-latest}
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-flowtimedb}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-timetime}
+      - POSTGRES_DB=${POSTGRES_DB:-flowtimedb}
+      - SAMPLE_COUNT=${SAMPLE_COUNT:-7}
+      - SAMPLE_START_TIME=${SAMPLE_START_TIME:-20190101}
+      - SAMPLE_END_TIME=${SAMPLE_END_TIME:-20190101}
+    ports:
+      - ${PORT:-5444}:5432
+    tty: true
+    stdin_open: true
+    restart: always
+    shm_size: ${POSTGRES_SHM:-1GB}
+    volumes:
+      - flowtimedb_sample_data:/var/lib/postgresql/data
+    networks:
+      db:
+        aliases:
+          - flowtimedb_sample_data
+
+volumes:
+  flowtimedb_sample_data:
