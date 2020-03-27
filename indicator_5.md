@@ -2,7 +2,7 @@
 
 ## What is this?
 
-This is the number of ‘connections’ between each pair or regions, each day. This is defined as the number of unique subscribers that have visited each pair or regions, within a day.
+This is the number of ‘connections’ between each pair of regions, each day. This is defined as the number of unique subscribers that have visited each pair or regions, within a day.
 
 ## How to produce the indicator
 
