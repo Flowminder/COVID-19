@@ -13,7 +13,7 @@ To produce this indicator, you need to run a sequence of queries. These are:
 1. Count of unique subscribers per region per week - [`unique_subscribers_per_region_per_week`](indicators_3_4.sql#L5-L20)  
     See [Indicator 3](indicator_3.md) for description
 
-2. Home locations for all subscribers - [`home_locations`](indicators_1_2.sql#L24-L51)  
+2. Home locations for all subscribers - [`home_locations`](indicators_1_2.sql#L24-L64)  
     See description under [Indicator 2](indicator_2.md), and SQL code in [indicators_1_2.sql](indicators_1_2.sql)
 
 3. Count of unique subscribers seen at their home region, each week - [`count_unique_active_residents_per_week`](indicators_3_4.sql#L24-L42)  
