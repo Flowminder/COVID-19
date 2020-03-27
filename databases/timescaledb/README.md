@@ -49,13 +49,18 @@ SAMPLE_COUNT=20
 SAMPLE_START_TIME=20200101
 SAMPLE_END_TIME=20200107
 ```
-These default values are included in the environment variable file `.env-dev`. `SAMPLE_COUNT` defines how many records are generated in the sample data. `SAMPLE_START_TIME` and `SAMPLE_END_TIME` define the start and end timestamps between which the sample data will be generated. Note that sample data is generate on the first time the container is started up, using the settings in these environment variables.
+These default values are included in the environment variable file `.env-dev`:
+- `SAMPLE_COUNT` defines how many records are generated in the sample data. 
+- `SAMPLE_START_TIME` defines the start timestamp from which the sample data will be generated
+- `SAMPLE_END_TIME` defines the end timestamp up to which the sample data will be generated. 
+
+Note that sample data is generate on the first time the container is started up, using the settings in these environment variables.
 
 If these environment variables are not set, the Docker compose yml file will fall back to the defaults defined there e.g. `${SAMPLE_COUNT:-7}` will default to 7 if the `SAMPLE_COUNT` environment variable is not defined.
 
 ### Procedure to bring up a `timescaledb` database instance with pre-ingested sample data
 
-To export the default values for the environment variables, build the container image, and spin up the database with sample data:
+First we export the default values for the environment variables, build the container image, and spin up the database with sample data:
 ```
 set -a && source ./.env-dev && set +a
 make sample-db
@@ -74,7 +79,7 @@ To view the container logs:
 ```
 docker logs -f flowtimedb_sample_data
 ```
-Use `Ctrl-C` key combination to quit.  
+Use `Ctrl-C` key combination to quit viewing the container logs.  
 To tear down the container:
 ```
 make stop-sample-db
