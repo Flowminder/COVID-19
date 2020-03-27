@@ -14,8 +14,8 @@ services:
   flowtimedb:
     container_name: flowtimedb
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ../../
+      dockerfile: databases/timescaledb/Dockerfile
       target: base
     image: ${BASE_NAME}:${CONTAINER_TAG:-latest}
     environment:

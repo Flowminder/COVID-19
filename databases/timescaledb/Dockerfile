@@ -19,7 +19,9 @@ RUN mkdir -p /docker-entrypoint-initdb.d
 #
 #  Copy sql scripts to be run by PostgreSQL on build-time.
 #
-COPY --chown=postgres ./sql/a01_create_db.sql /docker-entrypoint-initdb.d/
+COPY --chown=postgres ./databases/timescaledb/sql/a01_create_db.sql /docker-entrypoint-initdb.d/
+COPY --chown=postgres ./core_tables.sql /docker-entrypoint-initdb.d/
+COPY --chown=postgres ./databases/timescaledb/sql/d01_create_hypertable.sql /docker-entrypoint-initdb.d/
 
 # Need to make postgres owner
 RUN chown -R postgres /docker-entrypoint-initdb.d
@@ -31,8 +33,8 @@ FROM base AS sample-data
 #
 #  Copy sql scripts to be run by PostgreSQL on build-time.
 #
-COPY --chown=postgres ./sql/b01_create_sample_procedure.sql /docker-entrypoint-initdb.d/
+COPY --chown=postgres ./databases/timescaledb/sql/e01_create_sample_procedure.sql /docker-entrypoint-initdb.d/
 #
 #  Copy file spinup build scripts to be execed.
 #
-COPY --chown=postgres ./scripts/b02_add_sample_data.sh /docker-entrypoint-initdb.d/
+COPY --chown=postgres ./databases/timescaledb/scripts/e02_add_sample_data.sh /docker-entrypoint-initdb.d/

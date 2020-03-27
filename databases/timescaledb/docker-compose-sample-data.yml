@@ -14,8 +14,8 @@ services:
   timescaledb_sampledata:
     container_name: flowtimedb_sample_data
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ../../
+      dockerfile: databases/timescaledb/Dockerfile
       target: sample-data
     image: ${DB_SAMPLE_DATA_NAME}:${CONTAINER_TAG:-latest}
     environment:
