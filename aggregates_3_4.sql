@@ -19,7 +19,7 @@ CREATE TABLE count_unique_subscribers_per_region_per_week AS (
 
 );
 
--- See indicators_1_2.sql for code to create the home_locations table
+-- See aggregates_1_2.sql for code to create the home_locations table
 
 CREATE TABLE count_unique_active_residents_per_week AS (
 
