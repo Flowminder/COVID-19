@@ -8,7 +8,7 @@ CREATE TABLE regional_pair_connections_per_day AS (
         SELECT connection_date,
             region1,
             region2,
-            COUNT(*) AS count
+            COUNT(*) AS subscriber_count
         FROM (
 
             SELECT t1.call_date AS connection_date,
@@ -46,6 +46,6 @@ CREATE TABLE regional_pair_connections_per_day AS (
         ) AS pair_connections
         GROUP BY 1, 2, 3
     ) AS grouped
-    WHERE grouped.count >= 15
+    WHERE grouped.subscriber_count >= 15
 
 );
