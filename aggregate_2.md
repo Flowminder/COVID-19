@@ -16,7 +16,7 @@ To produce this aggregate, you need to run a sequence of queries in the followin
 2. Home locations for all subscribers - [`home_locations`](intermediate_queries.sql#L5-L44)  
     See description under [Intermediate queries](intermediate_queries.md), and SQL code in [intermediate_queries.sql](intermediate_queries.sql).
 
-3. Count of unique subscribers seen at their home region, each day - [`count_unique_active_residents_per_day`](aggregates_1_2.sql#L67-L83)  
+3. Count of unique subscribers seen at their home region, each day - [`count_unique_active_residents_per_region_per_day`](aggregates_1_2.sql#L67-L83)  
     *Description*: This calculates the number of subscribers that use their phone at their home location (see point (2) above) each day.
 
 4. Subtract (3) from (1) to obtain the number of non-residents seen at each region, each day - [`count_unique_visitors_per_region_per_day`](aggregates_1_2.sql#L85-L97)  

@@ -20,7 +20,7 @@ CREATE TABLE count_unique_subscribers_per_region_per_day AS (
 );
 
 
-CREATE TABLE count_unique_active_residents_per_day AS (
+CREATE TABLE count_unique_active_residents_per_region_per_day AS (
 
     SELECT * FROM (
         SELECT calls.call_date AS visit_date,
@@ -44,7 +44,7 @@ CREATE TABLE count_unique_visitors_per_region_per_day AS (
             all_visits.region,
             all_visits.subscriber_count - coalesce(home_visits.subscriber_count, 0) AS subscriber_count
         FROM count_unique_subscribers_per_region_per_day all_visits
-        LEFT JOIN count_unique_active_residents_per_day home_visits
+        LEFT JOIN count_unique_active_residents_per_region_per_day home_visits
             ON all_visits.visit_date = home_visits.visit_date
             AND all_visits.region = home_visits.region
     ) AS visitors

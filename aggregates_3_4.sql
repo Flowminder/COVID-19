@@ -19,7 +19,7 @@ CREATE TABLE count_unique_subscribers_per_region_per_week AS (
 
 );
 
-CREATE TABLE count_unique_active_residents_per_week AS (
+CREATE TABLE count_unique_active_residents_per_region_per_week AS (
 
     SELECT * FROM (
         SELECT extract('week' FROM calls.call_date) AS visit_week,
@@ -46,7 +46,7 @@ CREATE TABLE count_unique_visitors_per_region_per_week AS (
             all_visits.region,
             all_visits.subscriber_count - coalesce(home_visits.subscriber_count, 0) AS subscriber_count
         FROM count_unique_subscribers_per_region_per_week all_visits
-        LEFT JOIN count_unique_active_residents_per_week home_visits
+        LEFT JOIN count_unique_active_residents_per_region_per_week home_visits
             ON all_visits.visit_week = home_visits.visit_week
             AND all_visits.region = home_visits.region
     ) AS visitors
