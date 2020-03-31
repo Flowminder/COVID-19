@@ -19,8 +19,6 @@ CREATE TABLE count_unique_subscribers_per_region_per_week AS (
 
 );
 
--- See aggregates_1_2.sql for code to create the home_locations table
-
 CREATE TABLE count_unique_active_residents_per_week AS (
 
     SELECT * FROM (
@@ -30,7 +28,7 @@ CREATE TABLE count_unique_active_residents_per_week AS (
         FROM calls
         INNER JOIN cells
             ON calls.location_id = cells.cell_id
-        INNER JOIN home_locations homes
+        INNER JOIN home_locations homes     -- See intermediate_queries.sql for code to create the home_locations table
             ON calls.msisdn = homes.msisdn
             AND cells.region = homes.region
         WHERE calls.call_date >= '2020-02-17'

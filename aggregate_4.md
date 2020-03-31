@@ -13,8 +13,8 @@ To produce this aggregate, you need to run a sequence of queries. These are:
 1. Count of unique subscribers per region per week - [`unique_subscribers_per_region_per_week`](aggregates_3_4.sql#L5-L20)  
     See [Aggregate 3](aggregate_3.md) for description
 
-2. Home locations for all subscribers - [`home_locations`](aggregates_1_2.sql#L24-L64)  
-    See description under [Aggregate 2](aggregate_2.md), and SQL code in [aggregates_1_2.sql](aggregates_1_2.sql)
+2. Home locations for all subscribers - [`home_locations`](intermediate_queries.sql#L5-L44)  
+    See description under [Intermediate queries](intermediate_queries.md), and SQL code in [intermediate_queries.sql](intermediate_queries.sql).
 
 3. Count of unique subscribers seen at their home region, each week - [`count_unique_active_residents_per_week`](aggregates_3_4.sql#L24-L42)  
     *Description*: This calculates the number of subscribers that use their phone at their home location (see point (2) above) each week. When specifying the dates in the query, take care to include entire weeks in the date range. (E.g. the inbuilt `extract(‘week’)` function in Postgres assigns a number to each week, with weeks starting on Monday and ending on Sunday).

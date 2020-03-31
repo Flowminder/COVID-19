@@ -13,8 +13,8 @@ To produce this aggregate, you need to run a sequence of queries in the followin
 1. Count of unique subscribers per region per day - [`count_unique_subscribers_per_region_per_day`](aggregates_1_2.sql#L5-L20)  
     See [Aggregate 1](aggregate_1.md) for description
 
-2. Home locations for all subscribers - [`home_locations`](aggregates_1_2.sql#L24-L64)  
-    *Description*: This query allocates each subscriber to a region that is defined to be their ‘home location’. We do this by assuming that a subscriber uses their phone for the last time each day in their home region, and then find the modal region (the region with the most counts) over the course of a month. We recommend that you use a period of data that begins one month before travel restrictions or the COVID-19 outbreak was announced in your country, and ends on the day of the announcement.
+2. Home locations for all subscribers - [`home_locations`](intermediate_queries.sql#L5-L44)  
+    See description under [Intermediate queries](intermediate_queries.md), and SQL code in [intermediate_queries.sql](intermediate_queries.sql).
 
 3. Count of unique subscribers seen at their home region, each day - [`count_unique_active_residents_per_day`](aggregates_1_2.sql#L67-L83)  
     *Description*: This calculates the number of subscribers that use their phone at their home location (see point (2) above) each day.

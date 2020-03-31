@@ -47,7 +47,7 @@ We will soon be adding analysis code and guidelines.
 
 All aggregates included in this repository produce aggregated outputs (i.e. one result per region, not one result per subscriber), to protect subscribers' privacy and personal data. Additionally, the queries only produce outputs for regions with more than 15 subscribers.
 
-Note that some intermediate queries (including `home_locations`) produce per-subscriber data. These intermediate results should not be shared outside of the MNO's system.
+Note that the queries in [intermediate_queries.sql](intermediate_queries.sql) produce per-subscriber data. These intermediate results should not be shared outside of the MNO's system, and are intended for use only as components of the aggregate queries.
 
 ## Feedback
 
