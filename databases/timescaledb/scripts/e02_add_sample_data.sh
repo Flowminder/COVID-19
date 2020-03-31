@@ -31,8 +31,8 @@ psql --dbname="$POSTGRES_DB" -c "
         INSERT INTO subscribers (msisdn)
             SELECT md5(random()::TEXT) msisdn FROM generate_series(1, $SUBSCRIBER_COUNT);
 
-        INSERT INTO calls (date, datetime, msisdn, location_id)
-            SELECT date, datetime, msisdn, location_id
+        INSERT INTO calls (call_date, call_datetime, msisdn, location_id)
+            SELECT call_date, call_datetime, msisdn, location_id
             FROM generate_sample_cdr('$SAMPLE_COUNT'::INTEGER, '$SAMPLE_START_TIME'::TIMESTAMP, '$SAMPLE_END_TIME'::TIMESTAMP);
     END;
 "

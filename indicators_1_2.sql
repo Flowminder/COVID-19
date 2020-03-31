@@ -5,14 +5,14 @@
 CREATE TABLE count_unique_subscribers_per_region_per_day AS (
 
     SELECT * FROM (
-        SELECT date(calls.datetime) AS date,
+        SELECT date(calls.call_datetime) AS visit_date,
             cells.region AS region,
             COUNT(DISTINCT msisdn) AS count
         FROM calls
         INNER JOIN cells
             ON calls.location_id = cells.cell_id
-        WHERE date >= '2020-02-01'
-            AND date <= CURRENT_DATE
+        WHERE call_date >= '2020-02-01'
+            AND call_date <= CURRENT_DATE
         GROUP BY 1, 2
     ) AS grouped
     WHERE grouped.count > 15
@@ -29,28 +29,28 @@ CREATE TABLE home_locations AS (
             region,
             row_number() OVER (
                 PARTITION BY msisdn
-                ORDER BY total DESC, date DESC
+                ORDER BY total DESC, latest_date DESC
             ) AS rank
         FROM (
 
             SELECT msisdn,
                 region,
                 count(*) AS total,
-                max(date) AS date
+                max(call_date) AS latest_date
             FROM (
                 SELECT calls.msisdn,
                     cells.region,
-                    calls.datetime,
-                    calls.date,
+                    calls.call_datetime,
+                    calls.call_date,
                     ROW_NUMBER() OVER (
-                        PARTITION BY calls.msisdn, date(calls.datetime)
-                        ORDER BY calls.datetime DESC
+                        PARTITION BY calls.msisdn, date(calls.call_datetime)
+                        ORDER BY calls.call_datetime DESC
                     ) AS rank
                 FROM calls
                 INNER JOIN cells
                     ON calls.location_id = cells.cell_id
-                WHERE calls.date >= '2020-02-01'
-                    AND calls.date <= '2020-02-29'
+                WHERE calls.call_date >= '2020-02-01'
+                    AND calls.call_date <= '2020-02-29'
 
             ) ranked_events
 
@@ -67,7 +67,7 @@ CREATE TABLE home_locations AS (
 CREATE TABLE count_unique_active_residents_per_day AS (
 
     SELECT * FROM (
-        SELECT calls.date AS date,
+        SELECT calls.call_date AS visit_date,
             cells.region AS region,
             COUNT(DISTINCT calls.msisdn) AS count
         FROM calls
@@ -84,12 +84,12 @@ CREATE TABLE count_unique_active_residents_per_day AS (
 
 CREATE TABLE count_unique_visitors_per_region_per_day AS (
     SELECT * FROM (
-        SELECT all_visits.date,
+        SELECT all_visits.visit_date,
             all_visits.region,
             all_visits.count - COALESCE(home_visits.count, 0) AS count
         FROM count_unique_subscribers_per_region_per_day all_visits
         LEFT JOIN count_unique_active_residents_per_day home_visits
-            ON all_visits.date = home_visits.date
+            ON all_visits.visit_date = home_visits.visit_date
             AND all_visits.region = home_visits.region
     ) AS visitors
     WHERE visitors.count > 15

@@ -22,8 +22,8 @@ The code has been written assuming that the following tables exist:
 
 `calls` is the call events table, including the columns:
 - `msisdn`: SIM identifier,
-- `date`: event date,
-- `datetime`: event timestamp,
+- `call_date`: event date,
+- `call_datetime`: event timestamp,
 - `location_id`: identifier of the cell tower.
 
 `cells` is a table with information about cell towers, including the columns:

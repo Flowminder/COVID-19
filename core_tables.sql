@@ -4,8 +4,8 @@
 
 CREATE TABLE calls(
     msisdn TEXT,
-    date DATE,
-    datetime TIMESTAMP,
+    call_date DATE,
+    call_datetime TIMESTAMP,
     location_id TEXT
 );
 
