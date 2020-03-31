@@ -5,9 +5,9 @@
 CREATE TABLE count_unique_subscribers_per_region_per_week AS (
 
     SELECT * FROM (
-        SELECT EXTRACT('week' FROM calls.call_date) AS visit_week,
+        SELECT extract('week' FROM calls.call_date) AS visit_week,
             cells.region AS region,
-            COUNT(DISTINCT calls.msisdn) AS subscriber_count
+            count(DISTINCT calls.msisdn) AS subscriber_count
         FROM calls
         INNER JOIN cells
             ON calls.location_id = cells.cell_id
@@ -24,9 +24,9 @@ CREATE TABLE count_unique_subscribers_per_region_per_week AS (
 CREATE TABLE count_unique_active_residents_per_week AS (
 
     SELECT * FROM (
-        SELECT EXTRACT('week' FROM calls.call_date) AS visit_week,
+        SELECT extract('week' FROM calls.call_date) AS visit_week,
             cells.region AS region,
-            COUNT(DISTINCT calls.msisdn) AS subscriber_count
+            count(DISTINCT calls.msisdn) AS subscriber_count
         FROM calls
         INNER JOIN cells
             ON calls.location_id = cells.cell_id
@@ -46,7 +46,7 @@ CREATE TABLE count_unique_visitors_per_region_per_week AS (
     SELECT * FROM (
         SELECT all_visits.visit_week,
             all_visits.region,
-            all_visits.subscriber_count - COALESCE(home_visits.subscriber_count, 0) AS subscriber_count
+            all_visits.subscriber_count - coalesce(home_visits.subscriber_count, 0) AS subscriber_count
         FROM count_unique_subscribers_per_region_per_week all_visits
         LEFT JOIN count_unique_active_residents_per_week home_visits
             ON all_visits.visit_week = home_visits.visit_week

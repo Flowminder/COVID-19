@@ -8,7 +8,7 @@ CREATE TABLE regional_pair_connections_per_day AS (
         SELECT connection_date,
             region1,
             region2,
-            COUNT(*) AS subscriber_count
+            count(*) AS subscriber_count
         FROM (
 
             SELECT t1.call_date AS connection_date,
