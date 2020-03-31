@@ -15,7 +15,7 @@ CREATE TABLE count_unique_subscribers_per_region_per_day AS (
             AND call_date <= CURRENT_DATE
         GROUP BY 1, 2
     ) AS grouped
-    WHERE grouped.count > 15
+    WHERE grouped.count >= 15
 
 );
 
@@ -78,7 +78,7 @@ CREATE TABLE count_unique_active_residents_per_day AS (
             AND cells.region = homes.region
         GROUP BY 1, 2
     ) AS grouped
-    WHERE grouped.count > 15
+    WHERE grouped.count >= 15
 
 );
 
@@ -92,6 +92,6 @@ CREATE TABLE count_unique_visitors_per_region_per_day AS (
             ON all_visits.visit_date = home_visits.visit_date
             AND all_visits.region = home_visits.region
     ) AS visitors
-    WHERE visitors.count > 15
+    WHERE visitors.count >= 15
 
 );

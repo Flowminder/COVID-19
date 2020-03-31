@@ -15,7 +15,7 @@ CREATE TABLE count_unique_subscribers_per_region_per_week AS (
             AND calls.call_datetime <= '2020-03-15'
         GROUP BY 1, 2
     ) AS grouped
-    WHERE grouped.count > 15
+    WHERE grouped.count >= 15
 
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE count_unique_active_residents_per_week AS (
             AND calls.call_datetime <= '2020-03-15'
         GROUP BY 1, 2
     ) AS grouped
-    WHERE grouped.count > 15
+    WHERE grouped.count >= 15
 
 );
 
@@ -52,6 +52,6 @@ CREATE TABLE count_unique_visitors_per_region_per_week AS (
             ON all_visits.visit_week = home_visits.visit_week
             AND all_visits.region = home_visits.region
     ) AS visitors
-    WHERE visitors.count > 15
+    WHERE visitors.count >= 15
 
 );
