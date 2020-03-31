@@ -5,14 +5,14 @@
 CREATE TABLE count_unique_subscribers_per_region_per_day AS (
 
     SELECT * FROM (
-        SELECT date(calls.call_datetime) AS visit_date,
+        SELECT calls.call_date AS visit_date,
             cells.region AS region,
             COUNT(DISTINCT msisdn) AS subscriber_count
         FROM calls
         INNER JOIN cells
             ON calls.location_id = cells.cell_id
-        WHERE call_date >= '2020-02-01'
-            AND call_date <= CURRENT_DATE
+        WHERE calls.call_date >= '2020-02-01'
+            AND calls.call_date <= CURRENT_DATE
         GROUP BY 1, 2
     ) AS grouped
     WHERE grouped.subscriber_count >= 15
@@ -40,10 +40,9 @@ CREATE TABLE home_locations AS (
             FROM (
                 SELECT calls.msisdn,
                     cells.region,
-                    calls.call_datetime,
                     calls.call_date,
                     ROW_NUMBER() OVER (
-                        PARTITION BY calls.msisdn, date(calls.call_datetime)
+                        PARTITION BY calls.msisdn, calls.call_date
                         ORDER BY calls.call_datetime DESC
                     ) AS event_rank
                 FROM calls

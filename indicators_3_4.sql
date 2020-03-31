@@ -11,8 +11,8 @@ CREATE TABLE count_unique_subscribers_per_region_per_week AS (
         FROM calls
         INNER JOIN cells
             ON calls.location_id = cells.cell_id
-        WHERE calls.call_datetime >= '2020-02-17'
-            AND calls.call_datetime <= '2020-03-15'
+        WHERE calls.call_date >= '2020-02-17'
+            AND calls.call_date <= '2020-03-15'
         GROUP BY 1, 2
     ) AS grouped
     WHERE grouped.subscriber_count >= 15
@@ -33,8 +33,8 @@ CREATE TABLE count_unique_active_residents_per_week AS (
         INNER JOIN home_locations homes
             ON calls.msisdn = homes.msisdn
             AND cells.region = homes.region
-        WHERE calls.call_datetime >= '2020-02-17'
-            AND calls.call_datetime <= '2020-03-15'
+        WHERE calls.call_date >= '2020-02-17'
+            AND calls.call_date <= '2020-03-15'
         GROUP BY 1, 2
     ) AS grouped
     WHERE grouped.subscriber_count >= 15
