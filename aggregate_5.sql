@@ -5,47 +5,47 @@
 CREATE TABLE regional_pair_connections_per_day AS (
 
     SELECT * FROM (
-        SELECT date,
+        SELECT connection_date,
             region1,
             region2,
-            COUNT(*) AS count
+            count(*) AS subscriber_count
         FROM (
 
-            SELECT t1.date AS date,
+            SELECT t1.call_date AS connection_date,
                 t1.msisdn AS msisdn,
                 t1.region AS region1,
                 t2.region AS region2
             FROM (
                 SELECT DISTINCT calls.msisdn,
-                    calls.date,
+                    calls.call_date,
                     cells.region
                 FROM calls
                 INNER JOIN cells
                     ON calls.location_id = cells.cell_id
-                WHERE calls.date >= '2020-03-01'
-                    AND calls.date <= CURRENT_DATE
+                WHERE calls.call_date >= '2020-03-01'
+                    AND calls.call_date <= CURRENT_DATE
                 ) t1
 
                 FULL OUTER JOIN
 
                 (
                 SELECT DISTINCT calls.msisdn,
-                    calls.date,
+                    calls.call_date,
                     cells.region
                 FROM calls
                 INNER JOIN cells
                     ON calls.location_id = cells.cell_id
-                WHERE calls.date >= '2020-03-01'
-                    AND calls.date <= CURRENT_DATE
+                WHERE calls.call_date >= '2020-03-01'
+                    AND calls.call_date <= CURRENT_DATE
                 ) t2
 
                 ON t1.msisdn = t2.msisdn
-                AND t1.date = t2.date
+                AND t1.call_date = t2.call_date
             WHERE t1.region < t2.region
 
         ) AS pair_connections
         GROUP BY 1, 2, 3
     ) AS grouped
-    WHERE grouped.count > 15
+    WHERE grouped.subscriber_count >= 15
 
 );

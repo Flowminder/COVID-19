@@ -10,8 +10,8 @@ Create a function to generate synthetic sample CDR data
 */
 CREATE OR REPLACE FUNCTION generate_sample_cdr(IN sample_count INTEGER DEFAULT 7, IN start_timestamp TIMESTAMP DEFAULT '20190101'::TIMESTAMP, IN end_timestamp TIMESTAMP DEFAULT '20190101'::TIMESTAMP)
     RETURNS TABLE (
-		date                DATE,
-	    datetime            TIMESTAMP, 
+		call_date           DATE,
+	    call_datetime       TIMESTAMP, 
 	    msisdn              TEXT,
 	    location_id         TEXT
 	) AS
@@ -27,16 +27,16 @@ BEGIN
 	SELECT COUNT(*) INTO STRICT cell_count FROM cells;
 	RETURN QUERY
 	    SELECT
-			l.datetime::date AS date,
-			l.datetime,
+			l.call_datetime::date AS call_date,
+			l.call_datetime,
 			s.msisdn,
 			l.location_id
 		FROM (
-			SELECT cell_id AS location_id, d.datetime, sid FROM (
+			SELECT cell_id AS location_id, d.call_datetime, sid FROM (
 				SELECT
 					floor(random()*cell_count) + 1 cid,
 					floor(random()*subscriber_count) + 1 sid,
-					start_timestamp + random() * time_interval AS datetime
+					start_timestamp + random() * time_interval AS call_datetime
 				FROM generate_series(1, sample_count)
 			) d
 			INNER JOIN (
@@ -48,7 +48,7 @@ BEGIN
 			SELECT row_number() over() AS sid, m.msisdn FROM subscribers m
 		) s
 		USING (sid)
-		ORDER BY datetime;
+		ORDER BY call_datetime;
 END
 $$
 STRICT LANGUAGE plpgsql

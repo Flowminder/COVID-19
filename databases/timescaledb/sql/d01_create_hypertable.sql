@@ -6,7 +6,7 @@ to a day would be appropriate.
 If you are writing 190GB per day and have 128GB of memory, setting the time interval 
 to 4 hours would be appropriate.
 */
-SELECT create_hypertable('calls', 'datetime', chunk_time_interval => interval '1 day', associated_schema_name => 'public');
+SELECT create_hypertable('calls', 'call_datetime', chunk_time_interval => interval '1 day', associated_schema_name => 'public');
 /*
 A view which provides a list of the dates available in calls hypertable
 */

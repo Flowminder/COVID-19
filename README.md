@@ -2,10 +2,10 @@
 
 ## Overview
 
-The code in this repository produces indicators from CDR data that by themselves, or in combination with other data sources,
+The code in this repository produces aggregates from CDR data that by themselves, or in combination with other data sources,
 can support governments and health experts with their response to the COVID-19 outbreak. 
-A description of each indicator is provided alongside the code, together with suggestions for how it can be used. 
-We will start to add guidelines on how to analyse these indicators in the coming days. 
+A description of each aggregate is provided alongside the code, together with suggestions for how it can be used. 
+We will start to add guidelines on how to analyse these aggregates in the coming days. 
 
 We have initially focused on producing code and guidelines for mobile network operators that may have limited technical capacity, 
 especially those in low- and middle-income countries. This means that the code we have provided is both simple to modify, 
@@ -22,8 +22,8 @@ The code has been written assuming that the following tables exist:
 
 `calls` is the call events table, including the columns:
 - `msisdn`: SIM identifier,
-- `date`: event date,
-- `datetime`: event timestamp,
+- `call_date`: event date,
+- `call_datetime`: event timestamp,
 - `location_id`: identifier of the cell tower.
 
 `cells` is a table with information about cell towers, including the columns:
@@ -34,20 +34,20 @@ The code has been written assuming that the following tables exist:
 
 ## Content
 
-This repository currently contains SQL code and descriptions for the following indicators:
-- [Indicator 1: Count of unique subscribers, per region per day](indicator_1.md)
-- [Indicator 2: Count of unique ‘non-residents’, per region per day](indicator_2.md)
-- [Indicator 3: Count of unique subscribers, per region per week](indicator_3.md)
-- [Indicator 4: Count of unique ‘non-residents’, per region per week](indicator_4.md)
-- [Indicator 5: ‘Connectivity’ between pairs of regions - count of unique subscribers seen at each pair of locations, each day](indicator_5.md)
+This repository currently contains SQL code and descriptions for the following aggregates:
+- [Aggregate 1: Count of unique subscribers, per region per day](aggregate_1.md)
+- [Aggregate 2: Count of unique ‘non-residents’, per region per day](aggregate_2.md)
+- [Aggregate 3: Count of unique subscribers, per region per week](aggregate_3.md)
+- [Aggregate 4: Count of unique ‘non-residents’, per region per week](aggregate_4.md)
+- [Aggregate 5: ‘Connectivity’ between pairs of regions - count of unique subscribers seen at each pair of locations, each day](aggregate_5.md)
 
 We will soon be adding analysis code and guidelines.
 
 ## Privacy
 
-All indicators included in this repository produce aggregated outputs (i.e. one result per region, not one result per subscriber), to protect subscribers' privacy and personal data. Additionally, the queries only produce outputs for regions with more than 15 subscribers.
+All aggregates included in this repository produce aggregated outputs (i.e. one result per region, not one result per subscriber), to protect subscribers' privacy and personal data. Additionally, the queries only produce outputs for regions with more than 15 subscribers.
 
-Note that some intermediate queries (including `home_locations`) produce per-subscriber data. These intermediate results should not be shared outside of the MNO's system.
+Note that the queries in [intermediate_queries.sql](intermediate_queries.sql) produce per-subscriber data. These intermediate results should not be shared outside of the MNO's system, and are intended for use only as components of the aggregate queries.
 
 ## Feedback
 
