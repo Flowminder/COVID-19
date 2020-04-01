@@ -40,7 +40,7 @@ This repository currently contains SQL code and descriptions for the following a
 - [Aggregate 3: Count of unique subscribers, per region per week](aggregate_3.md)
 - [Aggregate 4: Count of unique ‘non-residents’, per region per week](aggregate_4.md)
 - [Aggregate 5: ‘Connectivity’ between pairs of regions - count of unique subscribers seen at each pair of locations, each day](aggregate_5.md)
-- [Aggregate 6: Directional connections between pairs of regions - count of unique subscribers moving between each pair of locations, each day](aggegate_6.md)
+- [Aggregate 6: Directional connections between pairs of regions - count of unique subscribers moving between each pair of locations, each day](aggregate_6.md)
 
 We will soon be adding analysis code and guidelines.
 
