@@ -20,7 +20,7 @@ psql --dbname="$POSTGRES_DB" -c "
 
         INSERT INTO cells (cell_id, region)
             SELECT cell_id, region FROM (
-                SELECT TO_CHAR(i, '00000')::TEXT cell_id, floor(random() * 20) + 1 rid
+                SELECT TO_CHAR(i, 'FM00000')::TEXT cell_id, floor(random() * 20) + 1 rid
                 FROM generate_series(1,$CELL_COUNT) s(i)
             ) l
             INNER JOIN (
