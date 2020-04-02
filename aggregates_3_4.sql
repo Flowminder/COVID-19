@@ -5,7 +5,7 @@
 CREATE TABLE count_unique_subscribers_per_region_per_week AS (
 
     SELECT * FROM (
-        SELECT extract('week' FROM calls.call_date) AS visit_week,
+        SELECT extract(WEEK FROM calls.call_date) AS visit_week,
             cells.region AS region,
             count(DISTINCT calls.msisdn) AS subscriber_count
         FROM calls
@@ -22,7 +22,7 @@ CREATE TABLE count_unique_subscribers_per_region_per_week AS (
 CREATE TABLE count_unique_active_residents_per_region_per_week AS (
 
     SELECT * FROM (
-        SELECT extract('week' FROM calls.call_date) AS visit_week,
+        SELECT extract(WEEK FROM calls.call_date) AS visit_week,
             cells.region AS region,
             count(DISTINCT calls.msisdn) AS subscriber_count
         FROM calls
