@@ -42,6 +42,7 @@ This repository currently contains SQL code and descriptions for the following a
 - [Aggregate 5: ‘Connectivity’ between pairs of regions - count of unique subscribers seen at each pair of locations, each day](aggregate_5.md)
 - [Aggregate 6: Directional connections between pairs of regions - count of unique subscribers moving between each pair of locations, each day](aggregate_6.md)
 - [Aggregate 7: Total number of calls per region per day](aggregate_7.md)
+- [Aggregate 8: Home location counts per region](aggregate_8.md)
 
 We will soon be adding analysis code and guidelines.
 
