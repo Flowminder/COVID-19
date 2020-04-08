@@ -1,4 +1,4 @@
-# Aggregate 9: 'Static' residents count per region
+# Static' residents count per region per day
 
 ## What is this?
 
