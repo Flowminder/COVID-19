@@ -16,4 +16,4 @@ Once you have this baseline data, you can then run the query once every day, onl
 
 ## Usage and interpretation
 
-This is similar to [Aggregate 6](aggregate_6.md), but includes the number of subscribers who 'stayed' within a region (i.e. they remained there long enough make more than one call). For example, the count for `region_from=A` and `region_to=A` is the number of unique subscribers who had a stay in region A on that day.
+This is similar to [Aggregate 6](aggregate_6.md), but includes the number of subscribers who 'stayed' within a region (i.e. they remained there long enough make more than one call). For example, the count for `region_from=A` and `region_to=A` is the number of unique subscribers who had a stay in region A on that day. In addition, and unlike [Aggregate 6](aggregate_6.md), a subscriber who called from region A, then B, then C would be counted in movements from A->B, and B->C but _not_ A->C.
