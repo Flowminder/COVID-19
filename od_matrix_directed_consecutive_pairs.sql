@@ -29,4 +29,4 @@ CREATE TABLE od_matrix_directed_consecutive_pairs
                               FROM located) AS sink USING (msisdn, call_date, rank)
              GROUP BY msisdn, call_date, region_from, region_to) AS joined
        GROUP BY call_date, region_from, region_to
-       HAVING count(*) > 15; 
+       HAVING count(*) >= 15; 
