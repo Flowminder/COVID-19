@@ -2,7 +2,7 @@
 -- License, v. 2.0. If a copy of the MPL was not distributed with this
 -- file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-CREATE TABLE od_matrix_directed_all_pairs
+CREATE TABLE od_matrix_directed_consecutive_pairs
   AS WITH located AS (SELECT msisdn,
                              region,
                              call_date,
