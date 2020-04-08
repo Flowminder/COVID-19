@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository provides Mobile Network Operators with code and guidelines to produce aggregates from their raw CDR data (Call Detail Records) in the context of the COVID-19 pandemic. A description of each aggregate is provided alongside the code, together with suggestions for how it can be used. For more information about the aggregates, and for additional resources on how to utilise them to produce mobility indicators, please visit [covid19.flowminder.org](https://covid19.flowminder.org).
+This repository provides mobile network operators with code and guidelines to produce aggregates from their raw CDR data (Call Detail Records) in the context of the COVID-19 pandemic. A description of each aggregate is provided alongside the code, together with suggestions for how it can be used. For more information about the aggregates, and for additional resources on how to utilise them to produce mobility indicators, please visit [covid19.flowminder.org](https://covid19.flowminder.org).
 
 We have initially focused on producing code and guidelines for mobile network operators that may have limited technical capacity, 
 especially those in low- and middle-income countries. This means that the code we have provided is both simple to modify, 
