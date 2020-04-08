@@ -2,10 +2,7 @@
 
 ## Overview
 
-The code in this repository produces aggregates from CDR data that by themselves, or in combination with other data sources,
-can support governments and health experts with their response to the COVID-19 outbreak. 
-A description of each aggregate is provided alongside the code, together with suggestions for how it can be used. 
-We will start to add guidelines on how to analyse these aggregates in the coming days. 
+This repository provides mobile network operators with code and guidelines to produce aggregates from their raw CDR data (Call Detail Records) in the context of the COVID-19 pandemic. A description of each aggregate is provided alongside the code, together with suggestions for how it can be used. For more information about the aggregates, and for additional resources on how to utilise them to produce mobility indicators, please visit [covid19.flowminder.org](https://covid19.flowminder.org).
 
 We have initially focused on producing code and guidelines for mobile network operators that may have limited technical capacity, 
 especially those in low- and middle-income countries. This means that the code we have provided is both simple to modify, 
@@ -43,8 +40,6 @@ This repository currently contains SQL code and descriptions for the following a
 - [Aggregate 6: Directional connections between pairs of regions - count of unique subscribers moving between each pair of locations, each day](aggregate_6.md)
 - [Aggregate 7: Total number of calls per region per day](aggregate_7.md)
 - [Aggregate 8: Home location counts per region](aggregate_8.md)
-
-We will soon be adding analysis code and guidelines.
 
 ## Privacy
 
