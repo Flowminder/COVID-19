@@ -1,4 +1,4 @@
-# Static' residents count per region per day
+# Static residents count per region per day
 
 ## What is this?
 
