@@ -8,7 +8,7 @@ CREATE TABLE count_subscribers_home_region_per_day
             count(*) AS subscriber_count
      FROM (SELECT msisdn,
                   call_date
-           FROM home_locations
+           FROM home_locations -- See intermediate_queries.sql for code to create the home_locations table
                 INNER JOIN (SELECT calls.msisdn,
                                    calls.call_date,
                                    cells.region
@@ -21,6 +21,6 @@ CREATE TABLE count_subscribers_home_region_per_day
            HAVING sum(((locs.region <> home_locations.region))::integer) = 0) AS at_home
           INNER JOIN home_locations USING (msisdn)
      GROUP BY region, call_date
-     HAVING count(*) > 15
+     HAVING count(*) >= 15
      ORDER BY call_date,
               region;
