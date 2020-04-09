@@ -40,6 +40,7 @@ This repository currently contains SQL code and descriptions for the following a
 - [Aggregate 6: Directional connections between pairs of regions - count of unique subscribers moving between each pair of locations, each day](aggregate_6.md)
 - [Aggregate 7: Total number of calls per region per day](aggregate_7.md)
 - [Aggregate 8: Home location counts per region](aggregate_8.md)
+- [Count of home relocations per week](count_home_relocations_per_week.md)
 
 ## Privacy
 
