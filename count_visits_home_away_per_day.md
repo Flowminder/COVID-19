@@ -22,6 +22,8 @@ Once you have this baseline data, you can then run the `count_visits_home_away_p
 
 ## Usage and interpretation
 
-This aggregate is similar to [Aggregate 1](aggregate_1.md), but contains more granular information (the number of active subscribers in each region whose home location is a given region, rather than just the total number of active subscribers in each region). In cases where travel is severely restricted, the number of subscribers active in regions away from their home should drop close to zero, while the number of subscribers active in their home regions may increase.
+This aggregate is similar to [Aggregate 1](aggregate_1.md), but contains more granular information (the number of active subscribers in each region whose home location is a given region, rather than just the total number of active subscribers in each region). In cases where travel is severely restricted, the number of subscribers active in regions away from their home should drop close to zero.
+
+The diagonal of the home-away matrix (where `home_region = visit_region`) is the number of 'active residents' in each region, each day. This can be useful for scaling other aggregates.
 
 This aggregate can also be used to identify regions with a large amount of mixing between subscribers from different home regions, which can help to indicate locations where the virus may spread between regions.
