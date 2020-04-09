@@ -13,7 +13,7 @@ To produce this aggregate, you need to run a sequence of queries in the followin
 1. Home locations for all subscribers - [`home_locations`](intermediate_queries.sql#L5-L44)  
     See description under [Intermediate queries](intermediate_queries.md), and SQL code in [intermediate_queries.sql](intermediate_queries.sql).
 
-2. Count of 'home' and 'away' visits per day - [`count_visits_home_away_per_day`](count_visits_home_away_per_day.sql#L5-L34)  
+2. Count of 'home' and 'away' visits per day - [`count_visits_home_away_per_day`](count_visits_home_away_per_day.sql#L5-L33)  
     *Description*: For each pair of regions R1 and R2, this query counts the number of unique subscribers whose 'home location' (as calculated in the previous query) is R1 and that used their phone in R2 during each day in the specified time period.
 
 The first time you run this, you will need to include a timespan of data that includes the period before any mobility restrictions were enforced in your country, or before the first cases of COVID-19 were reported in your country. This is so that you can establish what ‘normal’ baseline behaviour looks like, and then see how this behaviour changed. We recommend that you include at least two weeks of ‘normal’ baseline data (i.e. the two weeks immediately before the announcement of restrictions or the outbreak), and preferably four weeks.
