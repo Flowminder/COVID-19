@@ -6,9 +6,9 @@ This is the number of unique subscribers seen in each region, each day.
 
 ## How to produce the aggregate
 
-You can find the SQL code for producing this aggregate in [aggregates_1_2.sql](aggregates_1_2.sql).
+You can find the SQL code for producing this aggregate in [aggregate_1.sql](aggregate_1.sql).
 
-The query [`count_unique_subscribers_per_region_per_day`](aggregates_1_2.sql#L5-L20) is a standalone query which can be run by itself to produce the aggregate.
+The query [`count_unique_subscribers_per_region_per_day`](aggregate_1.sql#L5-L20) is a standalone query which can be run by itself to produce the aggregate.
 
 The first time you run this, you will need to include a timespan of data that includes the period before any mobility restrictions were enforced in your country, or before the first cases of COVID-19 were reported in your country. This is so that you can establish what ‘normal’ baseline behaviour looks like, and then see how this behaviour changed. We recommend that you include at least two weeks of ‘normal’ baseline data (i.e. the two weeks immediately before the announcement of restrictions or the outbreak), and preferably four weeks.
 

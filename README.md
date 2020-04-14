@@ -36,9 +36,7 @@ The code has been written assuming that the following tables exist:
 This repository currently contains SQL code and descriptions for the following aggregates:
 
 -   [Aggregate 1: Count of unique subscribers, per region per day](aggregate_1.md)
--   [Aggregate 2: Count of unique ‘non-residents’, per region per day](aggregate_2.md)
 -   [Aggregate 3: Count of unique subscribers, per region per week](aggregate_3.md)
--   [Aggregate 4: Count of unique ‘non-residents’, per region per week](aggregate_4.md)
 -   [Aggregate 5: ‘Connectivity’ between pairs of regions - count of unique subscribers seen at each pair of locations, each day](aggregate_5.md)
 -   [Aggregate 6: Directional connections between pairs of regions - count of unique subscribers moving between each pair of locations, each day](aggregate_6.md)
 -   [Aggregate 7: Total number of calls per region per day](aggregate_7.md)
