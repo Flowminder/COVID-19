@@ -36,9 +36,7 @@ The code has been written assuming that the following tables exist:
 This repository currently contains SQL code and descriptions for the following aggregates:
 
 -   [Aggregate 1: Count of unique subscribers, per region per day](aggregate_1.md)
--   [Aggregate 2: Count of unique ‘non-residents’, per region per day](aggregate_2.md)
 -   [Aggregate 3: Count of unique subscribers, per region per week](aggregate_3.md)
--   [Aggregate 4: Count of unique ‘non-residents’, per region per week](aggregate_4.md)
 -   [Aggregate 5: ‘Connectivity’ between pairs of regions - count of unique subscribers seen at each pair of locations, each day](aggregate_5.md)
 -   [Aggregate 6: Directional connections between pairs of regions - count of unique subscribers moving between each pair of locations, each day](aggregate_6.md)
 -   [Aggregate 7: Total number of calls per region per day](aggregate_7.md)
@@ -47,6 +45,7 @@ This repository currently contains SQL code and descriptions for the following a
 -   [Trips between consecutive locations per day](od_matrix_directed_consecutive_pairs.md)
 -   [Static resident counts per region per day](count_subscribers_home_region_per_day.md)
 -   [Count of ‘home’ and ‘away’ visits (‘home-away matrix’), per day](count_visits_home_away_per_day.md)
+-   [Count of home relocations per week](count_home_relocations_per_week.md)
 
 ## Privacy
 
