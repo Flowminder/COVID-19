@@ -44,6 +44,7 @@ This repository currently contains SQL code and descriptions for the following a
 -   [Count of subscribers that are seen only in one region per region per day](count_subscribers_single_region.md)
 -   [Trips between consecutive locations per day](od_matrix_directed_consecutive_pairs.md)
 -   [Static resident counts per region per day](count_subscribers_home_region_per_day.md)
+-   [Count of home relocations per week](count_home_relocations_per_week.md)
 
 ## Privacy
 
