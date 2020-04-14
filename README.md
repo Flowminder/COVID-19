@@ -44,6 +44,8 @@ This repository currently contains SQL code and descriptions for the following a
 -   [Aggregate 7: Total number of calls per region per day](aggregate_7.md)
 -   [Aggregate 8: Home location counts per region](aggregate_8.md)
 -   [Count of subscribers that are seen only in one region per region per day](count_subscribers_single_region.md)
+-   [Trips between consecutive locations per day](od_matrix_directed_consecutive_pairs.md)
+-   [Static resident counts per region per day](count_subscribers_home_region_per_day.md)
 
 ## Privacy
 
