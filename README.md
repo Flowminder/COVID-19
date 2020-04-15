@@ -27,7 +27,7 @@ The code has been written assuming that the following tables exist:
 `cells` is a table with information about cell towers, including the columns:
 
 -   `cell_id`: identifier of the cell tower,
--   `region`: the administrative region (or other type of region) that the cell tower is in. We are able to provide assistance with mapping cell tower locations to administrative (or other) regions, if you do not already have this mapping.
+-   `locality`: the geographic area that the cell tower is in (for example, administrative region). We are able to provide assistance with mapping cell tower locations to administrative (or other) localities, if you do not already have this mapping.
 
 [core_tables.sql](core_tables.sql) contains definitions of the expected `calls` and `cells` tables.
 
@@ -35,8 +35,7 @@ The code has been written assuming that the following tables exist:
 
 This repository currently contains SQL code and descriptions for the following aggregates:
 
--   [Aggregate 1: Count of unique subscribers, per region per day](aggregate_1.md)
--   [Aggregate 3: Count of unique subscribers, per region per week](aggregate_3.md)
+-   [Count of unique subscribers, per locality per time interval](count_subscribers.md)
 -   [Aggregate 5: ‘Connectivity’ between pairs of regions - count of unique subscribers seen at each pair of locations, each day](aggregate_5.md)
 -   [Aggregate 6: Directional connections between pairs of regions - count of unique subscribers moving between each pair of locations, each day](aggregate_6.md)
 -   [Aggregate 7: Total number of calls per region per day](aggregate_7.md)
@@ -49,7 +48,7 @@ This repository currently contains SQL code and descriptions for the following a
 
 ## Privacy
 
-All aggregates included in this repository produce aggregated outputs (i.e. one result per region, not one result per subscriber), to protect subscribers' privacy and personal data. Additionally, the queries only produce outputs for regions with more than 15 subscribers.
+All aggregates included in this repository produce aggregated outputs (i.e. one result per locality, not one result per subscriber), to protect subscribers' privacy and personal data. Additionally, to ensure that no locational information about individual subscribers is revealed, only aggregates containing more than 15 subscribers are produced as outputs. The limit of 15 is in line with the standard that is used by many statistics offices.
 
 Note that the queries in [intermediate_queries.sql](intermediate_queries.sql) produce per-subscriber data. These intermediate results should not be shared outside of the MNO's system, and are intended for use only as components of the aggregate queries.
 
