@@ -6,7 +6,7 @@ For each locality, this is the number of unique subscribers that used their phon
 
 ## How to produce the aggregate
 
-You can find the SQL code for producing this aggregate in [count_subscribers.sql](count_subscribers.sql). We recommend that you calculate this aggregate for all available geographic divisions (e.g. state, municipality, district), for each of the time intervals hour, day and week.
+You can find the SQL code for producing this aggregate in [count_subscribers.sql](count_subscribers.sql). We recommend that you calculate this aggregate for all available geographic divisions (e.g. state, municipality, district), for each of the time intervals hour, day and week. When aggregating by week, take care to specify a date range that includes entire weeks (e.g. the inbuilt `extract(WEEK FROM ...)` function in Postgres assigns a number to each week, with weeks starting on Monday and ending on Sunday).
 
 The query [`count_subscribers_per_locality_per_day`](count_subscribers.sql#L5-L20) is a standalone query which can be run by itself to produce the aggregate for each day in the specified period. The queries [`count_subscribers_per_locality_per_week`](count_subscribers.sql#L23-L38) and [`count_subscribers_per_locality_per_hour`](count_subscribers.sql#L41-L57) are equivalent, but calculate the aggregate per week and per hour, respectively.
 
