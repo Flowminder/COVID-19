@@ -4,10 +4,10 @@
 
 CREATE TABLE home_locations AS (
 
-    SELECT msisdn, region FROM (
+    SELECT msisdn, locality FROM (
         SELECT
             msisdn,
-            region,
+            locality,
             row_number() OVER (
                 PARTITION BY msisdn
                 ORDER BY total DESC, latest_date DESC
@@ -15,12 +15,12 @@ CREATE TABLE home_locations AS (
         FROM (
 
             SELECT msisdn,
-                region,
+                locality,
                 count(*) AS total,
                 max(call_date) AS latest_date
             FROM (
                 SELECT calls.msisdn,
-                    cells.region,
+                    cells.locality,
                     calls.call_date,
                     row_number() OVER (
                         PARTITION BY calls.msisdn, calls.call_date
