@@ -11,8 +11,8 @@ into a predictable format.
 */
 CREATE extension IF NOT EXISTS timescaledb cascade;
 
-CREATE TABLE IF NOT EXISTS regions (
-    region TEXT
+CREATE TABLE IF NOT EXISTS localities (
+    locality TEXT
 );
 
 CREATE TABLE IF NOT EXISTS subscribers (
