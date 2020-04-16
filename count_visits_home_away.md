@@ -24,7 +24,7 @@ We recommend that you also modify the `count_visits_home_away_per_day` query to 
 
 ## Usage and interpretation
 
-This aggregate is similar to [Count of active subscribers](count_subscribers.md), but contains more granular information (the number of active subscribers in each locality whose home location is a given locality, rather than just the total number of active subscribers in each locality). In cases where travel is severely restricted, the number of subscribers active in localities away from their home should drop close to zero.
+This aggregate is similar to [_Count of active subscribers_](count_subscribers.md), but contains more granular information (the number of active subscribers in each locality whose home location is a given locality, rather than just the total number of active subscribers in each locality). In cases where travel is severely restricted, the number of subscribers active in localities away from their home should drop close to zero.
 
 The diagonal of the home-away matrix (where `home_locality = visit_locality`) is the number of 'active residents' in each locality, for each time interval. This can be useful for scaling other aggregates.
 
