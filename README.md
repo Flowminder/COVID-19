@@ -40,10 +40,10 @@ This repository currently contains SQL code and descriptions for the following a
 -   [Count of subscribers only seen in home locality](count_subscribers_home_locality.md)
 -   [Count of visits at home and away (home-away matrix)](count_visits_home_away.md)
 -   [Count of home relocations (home origin-destination matrix)](count_home_relocations.md)
+-   [Count of subscribers only seen in one locality](count_subscribers_single_locality.md)
 -   [Aggregate 5: ‘Connectivity’ between pairs of regions - count of unique subscribers seen at each pair of locations, each day](aggregate_5.md)
 -   [Aggregate 6: Directional connections between pairs of regions - count of unique subscribers moving between each pair of locations, each day](aggregate_6.md)
 -   [Aggregate 7: Total number of calls per region per day](aggregate_7.md)
--   [Count of subscribers that are seen only in one region per region per day](count_subscribers_single_region.md)
 -   [Trips between consecutive locations per day](od_matrix_directed_consecutive_pairs.md)
 
 ## Calculating aggregates over multiple time intervals and locality sizes
