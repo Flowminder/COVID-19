@@ -39,16 +39,16 @@ This repository currently contains SQL code and descriptions for the following a
 -   [Count of residents (home location counts)](count_residents.md)
 -   [Count of subscribers only seen in home locality](count_subscribers_home_locality.md)
 -   [Count of visits at home and away (home-away matrix)](count_visits_home_away.md)
+-   [Count of home relocations (home origin-destination matrix)](count_home_relocations.md)
 -   [Aggregate 5: ‘Connectivity’ between pairs of regions - count of unique subscribers seen at each pair of locations, each day](aggregate_5.md)
 -   [Aggregate 6: Directional connections between pairs of regions - count of unique subscribers moving between each pair of locations, each day](aggregate_6.md)
 -   [Aggregate 7: Total number of calls per region per day](aggregate_7.md)
 -   [Count of subscribers that are seen only in one region per region per day](count_subscribers_single_region.md)
 -   [Trips between consecutive locations per day](od_matrix_directed_consecutive_pairs.md)
--   [Count of home relocations per week](count_home_relocations_per_week.md)
 
 ## Calculating aggregates over multiple time intervals and locality sizes
 
-In several of the aggregates that we describe in the ‘Aggregation methods’ section, we recommend that, where possible, the aggregates should be calculated over different locality sizes (e.g. different levels of administrative divisions) and time intervals (e.g. hour, day, week). 
+In several of the aggregates defined in this repository, we recommend that, where possible, the aggregates should be calculated over different locality sizes (e.g. different levels of administrative divisions) and time intervals (e.g. hour, day, week). 
 
 Some aggregates are ‘additive’ in the sense that they can be calculated for the smallest locality size, or time interval, and then summed to compute the value for a larger locality size or time interval. However, any aggregate that counts the number of unique subscribers that have e.g. visited a certain locality is not additive. For example, Locality A may be composed of smaller subdivisions a1, a2, and a3. We can count the number of unique subscribers that visited a1, a2, and a3. But because some subscribers may have visited both a1 and a2, we cannot simply sum the number of subscribers that visited each subdivision to obtain the number of unique subscribers that visited Locality A (because subscribers will be counted multiple times if they visited multiple subdivisions). A similar reasoning applies to time intervals.
 
