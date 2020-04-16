@@ -35,16 +35,17 @@ The code has been written assuming that the following tables exist:
 
 This repository currently contains SQL code and descriptions for the following aggregates:
 
--   [Count of active subscribers](count_subscribers.md)
--   [Count of residents (home location counts)](count_residents.md)
--   [Count of subscribers only seen in home locality](count_subscribers_home_locality.md)
--   [Count of visits at home and away (home-away matrix)](count_visits_home_away.md)
--   [Count of home relocations (home origin-destination matrix)](count_home_relocations.md)
--   [Count of subscribers only seen in one locality](count_subscribers_single_locality.md)
--   [Count of events](count_events.md)
--   [Count of travellers (connections triangular matrix)](od_matrix_undirected_all_pairs.md)
--   [Count of travellers (origin-destination matrix, all pairs)](od_matrix_directed_all_pairs.md)
--   [Count of travellers (origin-destination matrix, consecutive pairs)](od_matrix_directed_consecutive_pairs.md)
+1.  [Count of active subscribers](count_subscribers.md)  
+2.  [Count of residents (home location counts)](count_residents.md)  
+3.  Count of travellers (origin-destination matrix). This aggregate has two variants:  
+    - [Variant 1: all pairs of locations](od_matrix_directed_all_pairs.md)  
+    - [Variant 2: consecutive pairs of locations](od_matrix_directed_consecutive_pairs.md)  
+4.  [Count of travellers (connections triangular matrix)](od_matrix_undirected_all_pairs.md)  
+5.  [Count of visits at home and away (home-away matrix)](count_visits_home_away.md)  
+6.  [Count of home relocations (home origin-destination matrix)](count_home_relocations.md)  
+7.  [Count of subscribers only seen in one locality](count_subscribers_single_locality.md)  
+8.  [Count of subscribers only seen in home locality](count_subscribers_home_locality.md)  
+9.  [Count of events](count_events.md)  
 
 ## Calculating aggregates over multiple time intervals and locality sizes
 
