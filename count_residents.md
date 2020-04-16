@@ -1,4 +1,4 @@
-# Home location counts (number of 'resident subscribers') per locality
+# Count of residents (home location counts), per locality
 
 ## What is this?
 
