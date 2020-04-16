@@ -36,10 +36,10 @@ The code has been written assuming that the following tables exist:
 This repository currently contains SQL code and descriptions for the following aggregates:
 
 -   [Count of unique subscribers, per locality per time interval](count_subscribers.md)
+-   [Home location counts (number of 'resident subscribers') per locality](count_residents.md)
 -   [Aggregate 5: ‘Connectivity’ between pairs of regions - count of unique subscribers seen at each pair of locations, each day](aggregate_5.md)
 -   [Aggregate 6: Directional connections between pairs of regions - count of unique subscribers moving between each pair of locations, each day](aggregate_6.md)
 -   [Aggregate 7: Total number of calls per region per day](aggregate_7.md)
--   [Aggregate 8: Home location counts per region](aggregate_8.md)
 -   [Count of subscribers that are seen only in one region per region per day](count_subscribers_single_region.md)
 -   [Trips between consecutive locations per day](od_matrix_directed_consecutive_pairs.md)
 -   [Static resident counts per region per day](count_subscribers_home_region_per_day.md)
