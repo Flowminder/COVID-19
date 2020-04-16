@@ -43,7 +43,7 @@ This repository currently contains SQL code and descriptions for the following a
 -   [Count of subscribers only seen in one locality](count_subscribers_single_locality.md)
 -   [Count of events](count_events.md)
 -   [Count of travellers (connections triangular matrix)](od_matrix_undirected_all_pairs.md)
--   [Aggregate 6: Directional connections between pairs of regions - count of unique subscribers moving between each pair of locations, each day](aggregate_6.md)
+-   [Count of travellers (origin-destination matrix, all pairs)](od_matrix_directed_all_pairs.md)
 -   [Trips between consecutive locations per day](od_matrix_directed_consecutive_pairs.md)
 
 ## Calculating aggregates over multiple time intervals and locality sizes

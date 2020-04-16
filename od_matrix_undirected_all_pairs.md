@@ -18,4 +18,4 @@ We recommend that you calculate this aggregate for all available geographic divi
 
 ## Usage and interpretation
 
-This aggregate is a simple measure of how much travel is occurring between each pair of localities. This is similar to [_Count of travellers (origin-destination matrix), all pairs_](od_matrix_directed_all_pairs.sql), but does not account for the direction of movement. We would expect to see a decrease in the number of connections between localities that are affected by travel restrictions. It will be possible to see which localities are still connected with each other, and which ones have become disconnected.
+This aggregate is a simple measure of how much travel is occurring between each pair of localities. This is similar to [_Count of travellers (origin-destination matrix, all pairs)_](od_matrix_directed_all_pairs.sql), but does not account for the direction of movement. We would expect to see a decrease in the number of connections between localities that are affected by travel restrictions. It will be possible to see which localities are still connected with each other, and which ones have become disconnected.
