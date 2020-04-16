@@ -10,7 +10,7 @@ You can find the SQL code for producing this aggregate in [count_visits_home_awa
 
 To produce this aggregate, you need to run a sequence of queries in the following order. These are:
 
-1. Home locations for all subscribers - [`home_locations`](home_locations.sql#L5-L44)  
+1. Home locations for all subscribers - [`home_locations`](home_locations.sql#L8-L47)  
     See description under [Home locations](home_locations.md), and SQL code in [home_locations.sql](home_locations.sql).
 
 2. Count of 'home' and 'away' visits per day - [`count_visits_home_away_per_day`](count_visits_home_away.sql#L5-L33)  

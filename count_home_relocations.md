@@ -10,7 +10,7 @@ You can find the SQL code for producing this aggregate in [count_home_relocation
 
 To produce this aggregate, you need to run a sequence of queries in the following order. These are:
 
-1. Home locations for all subscribers, during reference period before mobility restrictions began - [`home_locations`](home_locations.sql#L5-L44)  
+1. Home locations for all subscribers, during reference period before mobility restrictions began - [`home_locations`](home_locations.sql#L8-L47)  
     See description under [Home locations](home_locations.md), and SQL code in [home_locations.sql](home_locations.sql).
 
 2. Count of subscribers' home relocations per week - [`count_home_relocations_per_week`](count_home_relocations.sql#L5-L59)  

@@ -6,15 +6,15 @@ CREATE TABLE od_matrix_undirected_all_pairs_per_day AS (
 
     SELECT * FROM (
         SELECT connection_date,
-            locality_A,
-            locality_B,
+            locality_1,
+            locality_2,
             count(*) AS subscriber_count
         FROM (
 
             SELECT t1.call_date AS connection_date,
                 t1.msisdn AS msisdn,
-                t1.locality AS locality_A,
-                t2.locality AS locality_B
+                t1.locality AS locality_1,
+                t2.locality AS locality_2
             FROM (
                 SELECT DISTINCT calls.msisdn,
                     calls.call_date,
