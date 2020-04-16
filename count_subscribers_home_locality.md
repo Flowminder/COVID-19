@@ -2,7 +2,7 @@
 
 ## What is this?
 
-This is the total number of subscribers who are not seen outside of their 'home location' in each locality. See [home_locations.md](home_locations.md) for a definition of 'home location'.
+This is the total number of subscribers who are not seen outside of their 'home location' in each locality. See [Home locations](home_locations.md) for a definition of 'home location'.
 
 ## How to produce the aggregate
 

@@ -2,7 +2,7 @@
 
 ## What is this?
 
-For each pair of localities R1 and R2, in each time interval, count the number of unique subscribers whose 'home location' is R1 and that used their phone in R2 during the specified time interval. See [home_locations.md](home_locations.md) for a definition of 'home location'.
+For each pair of localities R1 and R2, in each time interval, count the number of unique subscribers whose 'home location' is R1 and that used their phone in R2 during the specified time interval. See [Home locations](home_locations.md) for a definition of 'home location'.
 
 ## How to produce the aggregate
 

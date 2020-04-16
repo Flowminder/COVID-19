@@ -2,7 +2,7 @@
 
 ## What is this?
 
-For each pair of localities R1 and R2, each week, count the number of unique subscribers whose 'home location' was R1 during a reference period before mobility restrictions began, and whose 'home location' during this week was R2. See [home_locations.md](home_locations.md) for a definition of 'home location'.
+For each pair of localities R1 and R2, each week, count the number of unique subscribers whose 'home location' was R1 during a reference period before mobility restrictions began, and whose 'home location' during this week was R2. See [Home locations](home_locations.md) for a definition of 'home location'.
 
 ## How to produce the aggregate
 
