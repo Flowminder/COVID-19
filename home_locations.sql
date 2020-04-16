@@ -2,6 +2,9 @@
 -- License, v. 2.0. If a copy of the MPL was not distributed with this
 -- file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+-- NOTE: Queries defined in this file produce subscriber-level data,
+--       which should not be shared outside an MNO's system.
+
 CREATE TABLE home_locations AS (
 
     SELECT msisdn, locality FROM (

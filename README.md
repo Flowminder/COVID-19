@@ -58,7 +58,7 @@ In most cases where we recommend that aggregates should be calculated over diffe
 
 All aggregates included in this repository produce aggregated outputs (i.e. one result per locality, not one result per subscriber), to protect subscribers' privacy and personal data. Additionally, to ensure that no locational information about individual subscribers is revealed, only aggregates containing more than 15 subscribers are produced as outputs. The limit of 15 is in line with the standard that is used by many statistics offices.
 
-Note that the queries in [intermediate_queries.sql](intermediate_queries.sql) produce per-subscriber data. These intermediate results should not be shared outside of the MNO's system, and are intended for use only as components of the aggregate queries.
+Note that the queries in [home_locations.sql](home_locations.sql) produce per-subscriber data. These intermediate results should not be shared outside of the MNO's system, and are intended for use only as components of the aggregate queries.
 
 ## Feedback
 

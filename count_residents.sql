@@ -6,7 +6,7 @@ CREATE TABLE count_residents_per_locality AS (
 
     SELECT * FROM (
         SELECT locality, count(msisdn) AS subscriber_count
-        FROM home_locations     -- See intermediate_queries.sql for code to create the home_locations table
+        FROM home_locations  -- See home_locations.sql for code to create the home_locations table
         GROUP BY locality
     ) AS home_counts
     WHERE home_counts.subscriber_count > 15
