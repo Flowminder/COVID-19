@@ -44,7 +44,7 @@ This repository currently contains SQL code and descriptions for the following a
 -   [Count of events](count_events.md)
 -   [Count of travellers (connections triangular matrix)](od_matrix_undirected_all_pairs.md)
 -   [Count of travellers (origin-destination matrix, all pairs)](od_matrix_directed_all_pairs.md)
--   [Trips between consecutive locations per day](od_matrix_directed_consecutive_pairs.md)
+-   [Count of travellers (origin-destination matrix, consecutive pairs)](od_matrix_directed_consecutive_pairs.md)
 
 ## Calculating aggregates over multiple time intervals and locality sizes
 
