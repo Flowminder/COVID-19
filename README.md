@@ -49,7 +49,7 @@ This repository currently contains SQL code and descriptions for the following a
 
 ## Calculating aggregates over multiple time intervals and locality sizes
 
-In several of the aggregates defined in this repository, we recommend that, where possible, the aggregates should be calculated over different locality sizes (e.g. different levels of administrative divisions) and time intervals (e.g. hour, day, week). 
+In several of the aggregates defined in this repository, we recommend that, where possible, the aggregates should be calculated over multiple locality sizes (e.g. different levels of administrative divisions) and time intervals (e.g. hour, day, week). 
 
 Some aggregates are ‘additive’ in the sense that they can be calculated for the smallest locality size, or time interval, and then summed to compute the value for a larger locality size or time interval. However, any aggregate that counts the number of unique subscribers that have e.g. visited a certain locality is not additive. For example, Locality A may be composed of smaller subdivisions a1, a2, and a3. We can count the number of unique subscribers that visited a1, a2, and a3. But because some subscribers may have visited both a1 and a2, we cannot simply sum the number of subscribers that visited each subdivision to obtain the number of unique subscribers that visited Locality A (because subscribers will be counted multiple times if they visited multiple subdivisions). A similar reasoning applies to time intervals.
 
