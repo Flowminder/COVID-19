@@ -15,16 +15,16 @@ export PGUSER="$POSTGRES_USER"
 
 psql --dbname="$POSTGRES_DB" -c "
     BEGIN;
-        INSERT INTO regions (region)
-            SELECT 'Region-' || TO_CHAR(i, 'FM00') AS region from generate_series(1,20) s(i);
+        INSERT INTO localities (locality)
+            SELECT 'Locality-' || TO_CHAR(i, 'FM00') AS locality from generate_series(1,20) s(i);
 
-        INSERT INTO cells (cell_id, region)
-            SELECT cell_id, region FROM (
+        INSERT INTO cells (cell_id, locality)
+            SELECT cell_id, locality FROM (
                 SELECT TO_CHAR(i, 'FM00000')::TEXT cell_id, floor(random() * 20) + 1 rid
                 FROM generate_series(1,$CELL_COUNT) s(i)
             ) l
             INNER JOIN (
-                SELECT row_number() over() AS rid, region FROM regions
+                SELECT row_number() over() AS rid, locality FROM localities
             ) r
             USING (rid);
 

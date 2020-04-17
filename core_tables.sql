@@ -11,5 +11,5 @@ CREATE TABLE calls(
 
 CREATE TABLE cells(
     cell_id TEXT,
-    region TEXT -- We are able to provide assistance with mapping cell tower locations to administrative (or other) regions, if you do not already have this mapping.
+    locality TEXT -- We are able to provide assistance with mapping cell tower locations to administrative (or other) localities, if you do not already have this mapping.
 );

@@ -2,12 +2,15 @@
 -- License, v. 2.0. If a copy of the MPL was not distributed with this
 -- file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+-- NOTE: Queries defined in this file produce subscriber-level data,
+--       which should not be shared outside an MNO's system.
+
 CREATE TABLE home_locations AS (
 
-    SELECT msisdn, region FROM (
+    SELECT msisdn, locality FROM (
         SELECT
             msisdn,
-            region,
+            locality,
             row_number() OVER (
                 PARTITION BY msisdn
                 ORDER BY total DESC, latest_date DESC
@@ -15,12 +18,12 @@ CREATE TABLE home_locations AS (
         FROM (
 
             SELECT msisdn,
-                region,
+                locality,
                 count(*) AS total,
                 max(call_date) AS latest_date
             FROM (
                 SELECT calls.msisdn,
-                    cells.region,
+                    cells.locality,
                     calls.call_date,
                     row_number() OVER (
                         PARTITION BY calls.msisdn, calls.call_date
