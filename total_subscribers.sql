@@ -5,11 +5,11 @@
 CREATE TABLE total_subscribers_per_day AS (
 
     SELECT call_date,
-        count(*) AS subscriber_count
+        count(DISTINCT msisdn) AS subscriber_count
     FROM calls
     WHERE call_date >= '2020-02-01'
         AND call_date <= CURRENT_DATE
-    GROUP BY call_date, msisdn
-    HAVING count(*) > 15
+    GROUP BY call_date
+    HAVING count(DISTINCT msisdn) > 15
 
 );
