@@ -21,7 +21,7 @@ Once a suitable set of localities has been selected, each cell tower must be ass
 The SQL queries in this repository have been written assuming that the following two tables exist:
 
 - `calls`: This table contains the CDR events for the period over which the aggregates are to be calculated, including the msisdn of the subscriber making the event, the date and time of the event, and the cell to which the subscriber connected.
-- `cells`: This table should have been produced in the previous step (["choose localities"](choose_localities)). This is a mapping from each cell ID to a locality.
+- `cells`: This table should have been produced in the previous step (["choose localities"](#choose-localities)). This is a mapping from each cell ID to a locality.
 
 Example of `calls` table:
 
@@ -61,7 +61,7 @@ In the descriptions below, we use `start_date` and `end_date` to refer to the st
 
 The first three aggregates we would recommend calculating are [`count_subscribers_per_locality_per_day`](../count_subscribers.md), [`total_subscribers_per_day`](../total_subscribers.md) and [`od_matrix_directed_all_pairs_per_day`](../od_matrix_directed_all_pairs.md).
 
-If your database / data analysis system can execute SQL queries, the queries in [count_subscribers.sql](../count_subscribers.sql#L5-L20), [total_subscribers.sql](../total_subscriber.sql#L5-L17) and [od_matrix_directed_all_pairs.sql](../od_matrix_directed_all_pairs.sql#L5-L53). As noted above, the names of tables and columns may need to be changed to match your data structure. Additionally, it may be necessary to modify or optimise the queries to suit your data system.
+If your database / data analysis system can execute SQL queries, the queries in [count_subscribers.sql](../count_subscribers.sql#L5-L20), [total_subscribers.sql](../total_subscribers.sql#L5-L17) and [od_matrix_directed_all_pairs.sql](../od_matrix_directed_all_pairs.sql#L5-L53). As noted above, the names of tables and columns may need to be changed to match your data structure. Additionally, it may be necessary to modify or optimise the queries to suit your data system.
 
 In case your system does not support running SQL queries, or it would be preferable to implement the queries in a different query language, the steps to produce these three aggregates are described below.
 
