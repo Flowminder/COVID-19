@@ -10,6 +10,8 @@ and also should not be extremely computationally intensive to run. However, we w
 including material that is suitable for settings where more capacity is available, and where higher phone usage results in higher frequency
 data. In these cases, it will be possible to produce more complex outputs and analyses.
 
+Mobile network operators looking to produce the aggregates described in this repository from their own CDR data should start by looking at the ["getting started" section](./getting_started).
+
 ## Technical usage
 
 The code will need to be adapted to each MNO's system.
