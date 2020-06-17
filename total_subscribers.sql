@@ -7,6 +7,8 @@ CREATE TABLE total_subscribers_per_day AS (
     SELECT call_date,
         count(DISTINCT msisdn) AS subscriber_count
     FROM calls
+    INNER JOIN cells
+        ON calls.location_id = cells.cell_id
     WHERE call_date >= '2020-02-01'
         AND call_date <= CURRENT_DATE
     GROUP BY call_date
