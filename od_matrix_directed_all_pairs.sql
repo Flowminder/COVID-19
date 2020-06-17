@@ -28,7 +28,7 @@ CREATE TABLE od_matrix_directed_all_pairs_per_day AS (
                     AND calls.call_date <= CURRENT_DATE
                 GROUP BY msisdn, call_date, locality
             ) t1
-            FULL OUTER JOIN (
+            INNER JOIN (
                 SELECT calls.msisdn,
                     calls.call_date,
                     cells.locality,
@@ -43,7 +43,7 @@ CREATE TABLE od_matrix_directed_all_pairs_per_day AS (
             ) t2
             ON t1.msisdn = t2.msisdn
                 AND t1.call_date = t2.call_date
-            WHERE t1.earliest_visit < t2.latest_visit
+            WHERE t1.earliest_visit <= t2.latest_visit
 
         ) AS pair_connections
         GROUP BY 1, 2, 3
