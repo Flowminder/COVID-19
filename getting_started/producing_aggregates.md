@@ -21,7 +21,7 @@ Once a suitable set of localities has been selected, each cell tower must be ass
 The SQL queries in this repository have been written assuming that the following two tables exist:
 
 - `calls`: This table contains the CDR events for the period over which the aggregates are to be calculated, including the msisdn of the subscriber making the event, the date and time of the event, and the cell to which the subscriber connected.
-- `cells`: This table should have been produced in the previous step (["choose localities"](#choose-localities)). This is a mapping from each cell ID to a locality.
+- `cells`: This table should have been produced in the previous step (["choose localities"](#1-choose-localities)). This is a mapping from each cell ID to a locality.
 
 Example of `calls` table:
 
