@@ -11,28 +11,26 @@ CREATE TABLE od_matrix_directed_all_pairs_per_day AS (
             count(*) AS subscriber_count
         FROM (
 
-            SELECT t1.call_date AS connection_date,
-                t1.msisdn AS msisdn,
-                t1.locality AS locality_from,
-                t2.locality AS locality_to
+            SELECT earliest_visits.call_date AS connection_date,
+                earliest_visits.msisdn AS msisdn,
+                earliest_visits.locality AS locality_from,
+                latest_visits.locality AS locality_to
             FROM (
                 SELECT calls.msisdn,
                     calls.call_date,
                     cells.locality,
-                    min(calls.call_datetime) AS earliest_visit,
-                    max(calls.call_datetime) AS latest_visit
+                    min(calls.call_datetime) AS earliest_visit
                 FROM calls
                 INNER JOIN cells
                     ON calls.location_id = cells.cell_id
                 WHERE calls.call_date >= '2020-02-01'
                     AND calls.call_date <= CURRENT_DATE
                 GROUP BY msisdn, call_date, locality
-            ) t1
+            ) earliest_visits
             INNER JOIN (
                 SELECT calls.msisdn,
                     calls.call_date,
                     cells.locality,
-                    min(calls.call_datetime) AS earliest_visit,
                     max(calls.call_datetime) AS latest_visit
                 FROM calls
                 INNER JOIN cells
@@ -40,10 +38,10 @@ CREATE TABLE od_matrix_directed_all_pairs_per_day AS (
                 WHERE calls.call_date >= '2020-02-01'
                     AND calls.call_date <= CURRENT_DATE
                 GROUP BY msisdn, call_date, locality
-            ) t2
-            ON t1.msisdn = t2.msisdn
-                AND t1.call_date = t2.call_date
-            WHERE t1.earliest_visit <= t2.latest_visit
+            ) latest_visits
+            ON earliest_visits.msisdn = latest_visits.msisdn
+                AND earliest_visits.call_date = latest_visits.call_date
+            WHERE earliest_visits.earliest_visit <= latest_visits.latest_visit
 
         ) AS pair_connections
         GROUP BY 1, 2, 3
