@@ -70,9 +70,9 @@ The first step in calculating each of the aggregates is to join each CDR event w
 1. Select the subset of the `calls` table with `call_date >= start_date` and `call_date <=  end_date`  
 2. Join this subset of the `calls` table to the `cells` table, matching the `location_id` field of `calls` to the `cell_id` field of `cells`.
 
-The resulting 'located calls' table should contain one row for each CDR event between `start_date` and `end_date`, with fields `msisdn`, `call_date`, `call_datetime` and `locality`.
+The resulting `located_calls` table should contain one row for each CDR event between `start_date` and `end_date`, with fields `msisdn`, `call_date`, `call_datetime` and `locality`.
 
-Here is an example of the 'located calls' table:
+Here is an example of the `located_calls` table:
 
 |              msisdn              | call_date  |       call_datetime        |  locality  |
 | -------------------------------- | ---------- | -------------------------- | ---------- |
@@ -85,12 +85,18 @@ Here is an example of the 'located calls' table:
 
 ### Query 1: count_subscribers_per_locality_per_day
 
-1. Create 'located calls' table as described above  
-2. Count the number of unique subscribers in each locality each day  
-    For each date in the date range:  
-        For each locality:  
-            Count the number of unique `msisdn`s that appear in the 'located calls' table with this `call_date` and `locality`  
-3. Only output rows with subscriber count > 15
+1. Create `located_calls` table as described above  
+2. Count the number of unique subscribers in each locality each day:  
+    ```
+    for each visit_date in range(start_date, end_date):  
+        for each locality in located_calls.locality:  
+            subscriber_count = count_unique(located_calls.msisdn)
+                               where located_calls.call_date=visit_date
+                               and located_calls.locality=locality;
+    ```  
+3. Only output rows with `subscriber_count > 15`
+
+The output should contain one row per day per locality.
 
 Example output from this aggregate query:
 
@@ -105,11 +111,16 @@ Example output from this aggregate query:
 
 ### Query 2: total_subscribers_per_day
 
-1. Create ‘located calls’ table as described above  
-2. Count the total number of unique subscribers each day  
-    For each date in the date range:  
-        Count the number of unique `msisdn`s that appear in the 'located calls' table with this `call_date`  
-3. Only output rows with subscriber count > 15
+1. Create `located_calls` table as described above  
+2. Count the total number of unique subscribers each day:  
+    ```
+    for each call_date in range(start_date, end_date):  
+        subscriber_count = count_unique(located_calls.msisdn)
+                           where located_calls.call_date=call_date;
+    ```  
+3. Only output rows with `subscriber_count > 15`
+
+The output should contain one row per day.
 
 Example output from this aggregate query:
 
@@ -124,26 +135,45 @@ Example output from this aggregate query:
 
 ### Query 3: od_matrix_directed_all_pairs_per_day
 
-1. Create ‘located calls’ table as described above.  
-2. Find the earliest time that each subscriber was active in each locality, each day  
-    For each date in the date range:  
-        For each locality:  
-            For each msisdn:  
-                Find the earliest time this msisdn appears in the 'located calls' table for this call date and locality  
-    This should produce an 'earliest visits' table, with columns `msisdn`, `call_date`, `locality`, `earliest_time`.  
-3. Find the latest time that each subscriber was active in each locality, each day  
-    For each date in the date range:  
-        For each locality:  
-            For each msisdn:  
-                Find the latest time this msisdn appears in the 'located calls' table for this call date and locality  
-    This should produce a 'latest visits' table, with columns `msisdn`, `call_date`, `locality`, `latest_time`.   
-4. Join the 'earliest visits' table to the 'latest visits' table, matching on columns `msisdn` and `call_date`. This should produce a table `pair_connections`, with columns `msisdn`, `call_date`, `locality_from`, `locality_to`, `earliest_time` and `latest_time` (where `locality_from` is the locality from the 'earliest visits' table, and `locality_to` is the locality from the 'latest visits' table).  
-5. For each pair of localities, count the number of unique subscribers who were active at `locality_from` before `locality_to` each day  
-    For each date in the date range:  
-        For each `locality_from`:  
-            For each `locality_to`:  
-                Count the number of rows in the `pair_connections` table with this `call_date`, `locality_from` and `locality_to`, where `earliest_date <= latest_date`  
+1. Create `located_calls` table as described above.  
+2. Find the earliest time that each subscriber was active in each locality, each day:  
+    ```
+    for each call_date in range(start_date, end_date):  
+        for each msisdn:  
+            for each locality_from in located_calls.locality:  
+                earliest_visit = min(located_calls.call_datetime)
+                                 where located_calls.call_date=call_date
+                                 and located_calls.msisdn=msisdn
+                                 and located_calls.locality=locality_from;
+    ```  
+    This should produce an `earliest_visits` table, with columns `call_date`, `msisdn`, `locality_from` and `earliest_visit`.  
+2. Find the latest time that each subscriber was active in each locality, each day:  
+    ```
+    for each call_date in range(start_date, end_date):  
+        for each msisdn:  
+            for each locality_to in located_calls.locality:  
+                latest_visit = max(located_calls.call_datetime)
+                               where located_calls.call_date=call_date
+                               and located_calls.msisdn=msisdn
+                               and located_calls.locality=locality_to;
+    ```  
+    This should produce a `latest_visits` table, with columns `call_date`, `msisdn`, `locality_from` and `latest_visit`.  
+4. Join the `earliest_visits` table to the `latest_visits` table, matching on columns `call_date` and `msisdn`.  
+5. Select only the rows from the joined table where `earliest_visit <= latest_visit` (i.e. subscribers who visited `locality_from` before `locality_to`).  
+    This should produce a table `pair_connections`, with columns `call_date`, `msisdn`, `locality_from` and `locality_to`.  
+5. For each pair of localities, count the number of unique subscribers who were active at `locality_from` before `locality_to` each day:  
+    ```
+    for each connection_date in range(start_date, end_date):  
+        for each locality_from:  
+            for each locality_to:  
+                subscriber_count = count_unique(pair_connections.msisdn)
+                                   where pair_connections.call_date=connection_date
+                                   and pair_connections.locality_from=locality_from
+                                   and pair_connections.locality_to=locality_to;
+    ```
 6. Only output rows with subscriber count > 15
+
+The output should contain one row per day per pair of localities.
 
 Example output from this aggregate query:
 
