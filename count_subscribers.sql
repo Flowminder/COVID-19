@@ -19,6 +19,11 @@ CREATE TABLE count_subscribers_per_locality_per_day AS (
 
 );
 
+-- If you are following the steps in 'getting_started', only the query above is required.
+
+-- The queries below are examples of how to adapt the queries in this repository
+-- to aggregate to different time intervals.
+-- (see also README.md#calculating-aggregates-over-multiple-time-intervals-and-locality-sizes)
 
 CREATE TABLE count_subscribers_per_locality_per_week AS (
     
