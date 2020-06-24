@@ -11,6 +11,8 @@ CREATE TABLE total_subscribers_per_day AS (
         ON calls.location_id = cells.cell_id
     WHERE call_date >= '2020-02-01'
         AND call_date <= CURRENT_DATE
+        AND cells.locality IS NOT NULL
+        AND cells.locality != ''
     GROUP BY call_date
     HAVING count(DISTINCT msisdn) > 15
 
