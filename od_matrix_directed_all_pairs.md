@@ -8,7 +8,7 @@ This is the number of ‘directional connections’ between each pair of localit
 
 You can find the SQL code for producing this aggregate in [od_matrix_directed_all_pairs.sql](od_matrix_directed_all_pairs.sql).
 
-The query [`od_matrix_directed_all_pairs_per_day`](od_matrix_directed_all_pairs.sql#L5-L43) is a standalone query which can be run by itself to produce the aggregate.
+The query [`od_matrix_directed_all_pairs_per_day`](od_matrix_directed_all_pairs.sql#L5-L51) is a standalone query which can be run by itself to produce the aggregate.
 
 The first time you run this, you will need to include a timespan of data that includes the period before any mobility restrictions were enforced in your country, or before the first cases of COVID-19 were reported in your country. This is so that you can establish what ‘normal’ baseline behaviour looks like, and then see how this behaviour changed. We recommend that you include at least two weeks of ‘normal’ baseline data (i.e. the two weeks immediately before the announcement of restrictions or the outbreak), and preferably four weeks.
 
