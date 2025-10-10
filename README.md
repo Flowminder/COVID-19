@@ -1,3 +1,8 @@
+> [!WARNING]
+> This repository is now archived in favour of https://github.com/Flowminder/cdr-sql-aggregates.
+
+
+
 # Data insights for COVID-19 response: resources for producing mobility indicators and analysis from CDR data
 
 ## Overview
